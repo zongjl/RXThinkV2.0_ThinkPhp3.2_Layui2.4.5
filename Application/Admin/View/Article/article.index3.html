@@ -1,0 +1,392 @@
+	
+	<!-- 操作功能区一 -->
+	<blockquote class="layui-elem-quote layui-form-item">
+		<div class="layui-inline">
+			<form class="layui-form" style="float:left;">
+				<div class="layui-input-inline">
+					<input type="text" name="keywords" placeholder="请输入文章标题" autocomplete="off" class="layui-input">
+				</div>
+				<button class="layui-btn" lay-submit="" lay-filter="searchForm"><i class="layui-icon">&#xe615;</i>查询</button>
+			</form>
+		</div>
+		<div class="layui-inline">
+		{:W('funcNode/btnAdd',array(添加文章))}
+		{:W('funcNode/btnDAll',array(批量删除))}
+		</div>
+	</blockquote>
+	
+	<link rel="stylesheet" type="text/css" href="/Public/Admin/css/base.css" media="all">
+	<style type="text/css">
+		
+.layadmin-maillist-fluid .layadmin-contact-box {
+ padding:20px;
+ background-color:#fff;
+ border:1px solid #e7eaec;
+ overflow:hidden
+}
+.layadmin-maillist-fluid .layadmin-text-center img {
+ max-width:80%;
+ border-radius:50%;
+ margin-top:5px
+}
+.layadmin-maillist-fluid .layadmin-font-blod {
+ font-weight:600
+}
+.layadmin-maillist-fluid .layadmin-maillist-img {
+ margin-top:5px
+}
+.layadmin-maillist-fluid .layadmin-title {
+ margin:5px 0 10px
+}
+.layadmin-maillist-fluid .layadmin-textimg {
+ line-height:25px;
+ margin-bottom:10px
+}
+.layadmin-maillist-fluid .layadmin-address {
+ line-height:1.5;
+ margin-bottom:20px
+}
+.layadmin-maillist-fluid .layadmin-padding-left20 {
+ padding-left:20px
+}
+.layadmin-homepage-shadow {
+ box-shadow:0 1px 1px rgba(0,0,0,.05);
+ background-color:#fff;
+ border-radius:0;
+ border:1px solid #e7ecf3
+}
+
+.layadmin-homepage-panel .text-center,.layadmin-maillist-fluid .layadmin-text-center {
+ text-align:center
+}
+
+	</style>
+    
+<div class="layui-fluid layadmin-maillist-fluid">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md4 layui-col-sm6">
+      <div class="layadmin-contact-box"> 
+          <div class="layui-col-md4 layui-col-sm6">
+            <a href="javascript:;">
+              <div class="layadmin-text-center">
+                <img src="http://www.layui.com/admin/pro/dist/style/res/template/character.jpg"> 
+                <div class="layadmin-maillist-img layadmin-font-blod">演员</div>
+              </div>
+            </a>
+          </div>
+        
+        <div class="layui-col-md8 layadmin-padding-left20 layui-col-sm6">
+          <a href="javascript:;">
+            <h3 class="layadmin-title">
+              <strong>胡歌</strong>
+            </h3>
+            <p class="layadmin-textimg">
+              <i class="layui-icon layui-icon-location"></i>
+              上海
+            </p>
+          </a>
+          <div class="layadmin-address">
+            <a href="javascript:;">
+              <strong>Hu Ge studio</strong>
+              <br>
+              E-mail:xxx@baidu.com
+              <br>
+              Weibo: https://weibo.com/hu_ge 
+              <br>
+              <addr title="phone">Tel:</addr>
+              (123) 456-7890
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md4 layui-col-sm6">
+      <div class="layadmin-contact-box"> 
+          <div class="layui-col-md4 layui-col-sm6">
+            <a href="javascript:;">
+              <div class="layadmin-text-center">
+                <img src="http://www.layui.com/admin/pro/dist/style/res/template/character.jpg"> 
+                <div class="layadmin-maillist-img layadmin-font-blod">演员</div>
+              </div>
+            </a>
+          </div>
+        
+        <div class="layui-col-md8 layadmin-padding-left20 layui-col-sm6">
+          <a href="javascript:;">
+            <h3 class="layadmin-title">
+              <strong>胡歌</strong>
+            </h3>
+            <p class="layadmin-textimg">
+              <i class="layui-icon layui-icon-location"></i>
+              上海
+            </p>
+          </a>
+          <div class="layadmin-address">
+            <a href="javascript:;">
+              <strong>Hu Ge studio</strong>
+              <br>
+              E-mail:xxx@baidu.com
+              <br>
+              Weibo: https://weibo.com/hu_ge 
+              <br>
+              <addr title="phone">Tel:</addr>
+              (123) 456-7890
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md4 layui-col-sm6">
+      <div class="layadmin-contact-box"> 
+          <div class="layui-col-md4 layui-col-sm6">
+            <a href="javascript:;">
+              <div class="layadmin-text-center">
+                <img src="http://www.layui.com/admin/pro/dist/style/res/template/character.jpg"> 
+                <div class="layadmin-maillist-img layadmin-font-blod">演员</div>
+              </div>
+            </a>
+          </div>
+        
+        <div class="layui-col-md8 layadmin-padding-left20 layui-col-sm6">
+          <a href="javascript:;">
+            <h3 class="layadmin-title">
+              <strong>胡歌</strong>
+            </h3>
+            <p class="layadmin-textimg">
+              <i class="layui-icon layui-icon-location"></i>
+              上海
+            </p>
+          </a>
+          <div class="layadmin-address">
+            <a href="javascript:;">
+              <strong>Hu Ge studio</strong>
+              <br>
+              E-mail:xxx@baidu.com
+              <br>
+              Weibo: https://weibo.com/hu_ge 
+              <br>
+              <addr title="phone">Tel:</addr>
+              (123) 456-7890
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+     <div class="layui-col-md4 layui-col-sm6">
+      <div class="layadmin-contact-box"> 
+          <div class="layui-col-md4 layui-col-sm6">
+            <a href="javascript:;">
+              <div class="layadmin-text-center">
+                <img src="http://www.layui.com/admin/pro/dist/style/res/template/character.jpg"> 
+                <div class="layadmin-maillist-img layadmin-font-blod">演员</div>
+              </div>
+            </a>
+          </div>
+        
+        <div class="layui-col-md8 layadmin-padding-left20 layui-col-sm6">
+          <a href="javascript:;">
+            <h3 class="layadmin-title">
+              <strong>胡歌</strong>
+            </h3>
+            <p class="layadmin-textimg">
+              <i class="layui-icon layui-icon-location"></i>
+              上海
+            </p>
+          </a>
+          <div class="layadmin-address">
+            <a href="javascript:;">
+              <strong>Hu Ge studio</strong>
+              <br>
+              E-mail:xxx@baidu.com
+              <br>
+              Weibo: https://weibo.com/hu_ge 
+              <br>
+              <addr title="phone">Tel:</addr>
+              (123) 456-7890
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md4 layui-col-sm6">
+      <div class="layadmin-contact-box"> 
+          <div class="layui-col-md4 layui-col-sm6">
+            <a href="javascript:;">
+              <div class="layadmin-text-center">
+                <img src="http://www.layui.com/admin/pro/dist/style/res/template/character.jpg"> 
+                <div class="layadmin-maillist-img layadmin-font-blod">演员</div>
+              </div>
+            </a>
+          </div>
+        
+        <div class="layui-col-md8 layadmin-padding-left20 layui-col-sm6">
+          <a href="javascript:;">
+            <h3 class="layadmin-title">
+              <strong>胡歌</strong>
+            </h3>
+            <p class="layadmin-textimg">
+              <i class="layui-icon layui-icon-location"></i>
+              上海
+            </p>
+          </a>
+          <div class="layadmin-address">
+            <a href="javascript:;">
+              <strong>Hu Ge studio</strong>
+              <br>
+              E-mail:xxx@baidu.com
+              <br>
+              Weibo: https://weibo.com/hu_ge 
+              <br>
+              <addr title="phone">Tel:</addr>
+              (123) 456-7890
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md4 layui-col-sm6">
+      <div class="layadmin-contact-box"> 
+          <div class="layui-col-md4 layui-col-sm6">
+            <a href="javascript:;">
+              <div class="layadmin-text-center">
+                <img src="http://www.layui.com/admin/pro/dist/style/res/template/character.jpg"> 
+                <div class="layadmin-maillist-img layadmin-font-blod">演员</div>
+              </div>
+            </a>
+          </div>
+        
+        <div class="layui-col-md8 layadmin-padding-left20 layui-col-sm6">
+          <a href="javascript:;">
+            <h3 class="layadmin-title">
+              <strong>胡歌</strong>
+            </h3>
+            <p class="layadmin-textimg">
+              <i class="layui-icon layui-icon-location"></i>
+              上海
+            </p>
+          </a>
+          <div class="layadmin-address">
+            <a href="javascript:;">
+              <strong>Hu Ge studio</strong>
+              <br>
+              E-mail:xxx@baidu.com
+              <br>
+              Weibo: https://weibo.com/hu_ge 
+              <br>
+              <addr title="phone">Tel:</addr>
+              (123) 456-7890
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+     <div class="layui-col-md4 layui-col-sm6">
+      <div class="layadmin-contact-box"> 
+          <div class="layui-col-md4 layui-col-sm6">
+            <a href="javascript:;">
+              <div class="layadmin-text-center">
+                <img src="http://www.layui.com/admin/pro/dist/style/res/template/character.jpg"> 
+                <div class="layadmin-maillist-img layadmin-font-blod">演员</div>
+              </div>
+            </a>
+          </div>
+        
+        <div class="layui-col-md8 layadmin-padding-left20 layui-col-sm6">
+          <a href="javascript:;">
+            <h3 class="layadmin-title">
+              <strong>胡歌</strong>
+            </h3>
+            <p class="layadmin-textimg">
+              <i class="layui-icon layui-icon-location"></i>
+              上海
+            </p>
+          </a>
+          <div class="layadmin-address">
+            <a href="javascript:;">
+              <strong>Hu Ge studio</strong>
+              <br>
+              E-mail:xxx@baidu.com
+              <br>
+              Weibo: https://weibo.com/hu_ge 
+              <br>
+              <addr title="phone">Tel:</addr>
+              (123) 456-7890
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md4 layui-col-sm6">
+      <div class="layadmin-contact-box"> 
+          <div class="layui-col-md4 layui-col-sm6">
+            <a href="javascript:;">
+              <div class="layadmin-text-center">
+                <img src="http://www.layui.com/admin/pro/dist/style/res/template/character.jpg"> 
+                <div class="layadmin-maillist-img layadmin-font-blod">演员</div>
+              </div>
+            </a>
+          </div>
+        
+        <div class="layui-col-md8 layadmin-padding-left20 layui-col-sm6">
+          <a href="javascript:;">
+            <h3 class="layadmin-title">
+              <strong>胡歌</strong>
+            </h3>
+            <p class="layadmin-textimg">
+              <i class="layui-icon layui-icon-location"></i>
+              上海
+            </p>
+          </a>
+          <div class="layadmin-address">
+            <a href="javascript:;">
+              <strong>Hu Ge studio</strong>
+              <br>
+              E-mail:xxx@baidu.com
+              <br>
+              Weibo: https://weibo.com/hu_ge 
+              <br>
+              <addr title="phone">Tel:</addr>
+              (123) 456-7890
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md4 layui-col-sm6">
+      <div class="layadmin-contact-box"> 
+          <div class="layui-col-md4 layui-col-sm6">
+            <a href="javascript:;">
+              <div class="layadmin-text-center">
+                <img src="http://www.layui.com/admin/pro/dist/style/res/template/character.jpg"> 
+                <div class="layadmin-maillist-img layadmin-font-blod">演员</div>
+              </div>
+            </a>
+          </div>
+        
+        <div class="layui-col-md8 layadmin-padding-left20 layui-col-sm6">
+          <a href="javascript:;">
+            <h3 class="layadmin-title">
+              <strong>胡歌</strong>
+            </h3>
+            <p class="layadmin-textimg">
+              <i class="layui-icon layui-icon-location"></i>
+              上海
+            </p>
+          </a>
+          <div class="layadmin-address">
+            <a href="javascript:;">
+              <strong>Hu Ge studio</strong>
+              <br>
+              E-mail:xxx@baidu.com
+              <br>
+              Weibo: https://weibo.com/hu_ge 
+              <br>
+              <addr title="phone">Tel:</addr>
+              (123) 456-7890
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,290 @@
+	
+	<!-- 操作功能区一 -->
+	<blockquote class="layui-elem-quote layui-form-item">
+		<div class="layui-inline">
+			<form class="layui-form" style="float:left;">
+				<div class="layui-input-inline">
+					<input type="text" name="keywords" placeholder="请输入文章标题" autocomplete="off" class="layui-input">
+				</div>
+				<button class="layui-btn" lay-submit="" lay-filter="searchForm"><i class="layui-icon">&#xe615;</i>查询</button>
+			</form>
+		</div>
+		<div class="layui-inline">
+		{:W('funcNode/btnAdd',array(添加文章))}
+		{:W('funcNode/btnDAll',array(批量删除))}
+		</div>
+	</blockquote>
+	
+	<link rel="stylesheet" type="text/css" href="/Public/Admin/css/base.css" media="all">
+	<style type="text/css">
+		body {
+			background-color:#F1F2F7;;
+		}
+		.layadmin-cmdlist-fluid {
+		 padding-bottom:60px
+		}
+		.cmdlist-container {
+		 background:#fff;
+		 border:1px solid transparent
+		}
+		.cmdlist-container:hover {
+		 border:1px solid #e8e8e8
+		}
+		.cmdlist-container img {
+		 width:100%
+		}
+		.cmdlist-text {
+		 padding:20px
+		}
+		.cmdlist-text .info {
+		 height:40px;
+		 font-size:14px;
+		 line-height:20px;
+		 width:100%;
+		 overflow:hidden;
+		 color:#666;
+		 margin-bottom:10px
+		}
+		.cmdlist-text .price {
+		 font-size:14px
+		}
+		.cmdlist-text .price b {
+		 margin-right:20px
+		}
+		.cmdlist-text .price p {
+		 display:inline-block
+		}
+		.cmdlist-text .flow {
+		 text-align:right;
+		 float:right
+		}
+	</style>
+    
+<div class="layui-fluid">
+	<div class="larry-container animated fadeIn">
+        
+        <!-- 统计模块面板 -->
+		<div class="layui-row layui-col-space30">
+			
+			<div class="layui-col-md2 layui-col-sm4">
+		        <div class="cmdlist-container">
+		            <a href="javascript:;">
+		              <img src="http://www.layui.com/admin/pro/dist/style/res/template/portrait.png"> 
+		            </a>
+		            <a href="javascript:;">
+		              <div class="cmdlist-text">
+		                <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
+		                <div class="price">
+		                    <b>￥79</b>
+		                    <p>
+		                      ¥
+		                      <del>130</del>
+		                    </p>
+		                    <span class="flow">
+		                      <i class="layui-icon layui-icon-rate">&#xe600;</i>
+		                      433
+		                    </span>
+		                </div>
+		              </div>
+		            </a>
+		        </div>
+		    </div>
+		    
+		    <div class="layui-col-md2 layui-col-sm4">
+		        <div class="cmdlist-container">
+		            <a href="javascript:;">
+		              <img src="http://www.layui.com/admin/pro/dist/style/res/template/portrait.png"> 
+		            </a>
+		            <a href="javascript:;">
+		              <div class="cmdlist-text">
+		                <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
+		                <div class="price">
+		                    <b>￥79</b>
+		                    <p>
+		                      ¥
+		                      <del>130</del>
+		                    </p>
+		                    <span class="flow">
+		                      <i class="layui-icon layui-icon-rate">&#xe600;</i>
+		                      433
+		                    </span>
+		                </div>
+		              </div>
+		            </a>
+		        </div>
+		    </div>
+		    
+		    <div class="layui-col-md2 layui-col-sm4">
+		        <div class="cmdlist-container">
+		            <a href="javascript:;">
+		              <img src="http://www.layui.com/admin/pro/dist/style/res/template/portrait.png"> 
+		            </a>
+		            <a href="javascript:;">
+		              <div class="cmdlist-text">
+		                <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
+		                <div class="price">
+		                    <b>￥79</b>
+		                    <p>
+		                      ¥
+		                      <del>130</del>
+		                    </p>
+		                    <span class="flow">
+		                      <i class="layui-icon layui-icon-rate">&#xe600;</i>
+		                      433
+		                    </span>
+		                </div>
+		              </div>
+		            </a>
+		        </div>
+		    </div>
+		    
+		    <div class="layui-col-md2 layui-col-sm4">
+		        <div class="cmdlist-container">
+		            <a href="javascript:;">
+		              <img src="http://www.layui.com/admin/pro/dist/style/res/template/portrait.png"> 
+		            </a>
+		            <a href="javascript:;">
+		              <div class="cmdlist-text">
+		                <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
+		                <div class="price">
+		                    <b>￥79</b>
+		                    <p>
+		                      ¥
+		                      <del>130</del>
+		                    </p>
+		                    <span class="flow">
+		                      <i class="layui-icon layui-icon-rate">&#xe600;</i>
+		                      433
+		                    </span>
+		                </div>
+		              </div>
+		            </a>
+		        </div>
+		    </div>
+		    
+		    <div class="layui-col-md2 layui-col-sm4">
+		        <div class="cmdlist-container">
+		            <a href="javascript:;">
+		              <img src="http://www.layui.com/admin/pro/dist/style/res/template/portrait.png"> 
+		            </a>
+		            <a href="javascript:;">
+		              <div class="cmdlist-text">
+		                <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
+		                <div class="price">
+		                    <b>￥79</b>
+		                    <p>
+		                      ¥
+		                      <del>130</del>
+		                    </p>
+		                    <span class="flow">
+		                      <i class="layui-icon layui-icon-rate">&#xe600;</i>
+		                      433
+		                    </span>
+		                </div>
+		              </div>
+		            </a>
+		        </div>
+		    </div>
+		    
+		    <div class="layui-col-md2 layui-col-sm4">
+		        <div class="cmdlist-container">
+		            <a href="javascript:;">
+		              <img src="http://www.layui.com/admin/pro/dist/style/res/template/portrait.png"> 
+		            </a>
+		            <a href="javascript:;">
+		              <div class="cmdlist-text">
+		                <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
+		                <div class="price">
+		                    <b>￥79</b>
+		                    <p>
+		                      ¥
+		                      <del>130</del>
+		                    </p>
+		                    <span class="flow">
+		                      <i class="layui-icon layui-icon-rate">&#xe600;</i>
+		                      433
+		                    </span>
+		                </div>
+		              </div>
+		            </a>
+		        </div>
+		    </div>
+		    
+		    <div class="layui-col-md2 layui-col-sm4">
+		        <div class="cmdlist-container">
+		            <a href="javascript:;">
+		              <img src="http://www.layui.com/admin/pro/dist/style/res/template/portrait.png"> 
+		            </a>
+		            <a href="javascript:;">
+		              <div class="cmdlist-text">
+		                <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
+		                <div class="price">
+		                    <b>￥79</b>
+		                    <p>
+		                      ¥
+		                      <del>130</del>
+		                    </p>
+		                    <span class="flow">
+		                      <i class="layui-icon layui-icon-rate">&#xe600;</i>
+		                      433
+		                    </span>
+		                </div>
+		              </div>
+		            </a>
+		        </div>
+		    </div>
+		    
+		    <div class="layui-col-md2 layui-col-sm4">
+		        <div class="cmdlist-container">
+		            <a href="javascript:;">
+		              <img src="http://www.layui.com/admin/pro/dist/style/res/template/portrait.png"> 
+		            </a>
+		            <a href="javascript:;">
+		              <div class="cmdlist-text">
+		                <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
+		                <div class="price">
+		                    <b>￥79</b>
+		                    <p>
+		                      ¥
+		                      <del>130</del>
+		                    </p>
+		                    <span class="flow">
+		                      <i class="layui-icon layui-icon-rate">&#xe600;</i>
+		                      433
+		                    </span>
+		                </div>
+		              </div>
+		            </a>
+		        </div>
+		    </div>
+		    
+		    <div class="layui-col-md2 layui-col-sm4">
+		        <div class="cmdlist-container">
+		            <a href="javascript:;">
+		              <img src="http://www.layui.com/admin/pro/dist/style/res/template/portrait.png"> 
+		            </a>
+		            <a href="javascript:;">
+		              <div class="cmdlist-text">
+		                <p class="info">2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套</p>
+		                <div class="price">
+		                    <b>￥79</b>
+		                    <p>
+		                      ¥
+		                      <del>130</del>
+		                    </p>
+		                    <span class="flow">
+		                      <i class="layui-icon layui-icon-rate">&#xe600;</i>
+		                      433
+		                    </span>
+		                </div>
+		              </div>
+		            </a>
+		        </div>
+		    </div>
+		    
+		    
+		    
+		</div>
+
+	</div>
+</div>

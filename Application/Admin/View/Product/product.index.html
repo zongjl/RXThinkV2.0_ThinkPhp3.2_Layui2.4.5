@@ -1,0 +1,32 @@
+	
+	<!-- 操作功能区一 -->
+	<blockquote class="layui-elem-quote layui-form-item">
+		<div class="layui-inline">
+			<form class="layui-form" style="float:left;">
+				<div class="layui-input-inline">
+					<input type="text" name="name" placeholder="请输入商品名称" autocomplete="off" class="layui-input">
+				</div>
+				<button class="layui-btn" lay-submit="" lay-filter="searchForm"><i class="layui-icon">&#xe615;</i>查询</button>
+			</form>
+		</div>
+		<div class="layui-inline">
+		{:W('funcNode/btnAdd',array(添加商品))}
+		{:W('funcNode/btnDAll',array(批量删除))}
+		</div>
+	</blockquote>
+	
+	<!-- TABLE渲染区 -->
+	<table class="layui-hide" id="tableList" lay-filter="tableList"></table>
+	
+	<!-- 状态 -->
+	<script type="text/html" id="specTpl">
+	  <input type="checkbox" name="is_spec" value="{{ d.id }}" lay-skin="switch" lay-text="开启规格|关闭规格" lay-filter="is_spec" {{ d.is_spec == 1 ? 'checked' : '' }} >
+	</script>
+	
+	<!-- 操作功能区二 -->
+	<script type="text/html" id="toolBar">
+		{:W('funcNode/btnFunc',array(productModel,'&#xe631;',规格管理,'layui-bg-cyan',2))}
+		{:W('funcNode/btnEdit',array(编辑))}
+		{:W('funcNode/btnDel',array(删除))}
+	</script>
+ 
