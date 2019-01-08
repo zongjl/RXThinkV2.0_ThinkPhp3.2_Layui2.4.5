@@ -9,7 +9,7 @@
 return array(
     
     'SMS_1' => array(
-        'api_url'=>'http://223.68.139.178:9010/YidaInterface/SendSms.do?',
+        'api_url'=>'',
         'method'=>"GET",
         'params'=>array(
             'sname'=>"njjhy",
@@ -27,7 +27,7 @@ return array(
     ),
     
     'SMS_2' => array(
-        'api_url'=>'http://send.18sms.com/msg/HttpBatchSendSM',
+        'api_url'=>'',
         'method'=>"POST",
         'params'=>array(
             'account'   =>  '196qm4',

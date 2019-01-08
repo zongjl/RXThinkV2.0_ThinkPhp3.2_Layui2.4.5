@@ -18,7 +18,7 @@ define('IMG_PATH', ATTACHMENT_PATH."/img");
 define('UPLOAD_TEMP_PATH', IMG_PATH . '/temp');
 
 return array(
-    'SITE_NAME' => '南京云多普网络科技有限公司',
+    'SITE_NAME' => '企业级框架V2.0',
     'NICK_NAME' => '企业级框架V2.0',
     'DB_CONFIG' => 'mysql://root:111111@127.0.0.1:3306/kivii',
     'CACHE_CONFIG'=>'redis://:@127.0.0.1:6379/1',
