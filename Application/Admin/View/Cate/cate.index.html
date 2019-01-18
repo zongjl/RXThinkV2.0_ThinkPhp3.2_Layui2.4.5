@@ -1,18 +1,25 @@
-	
-	<!-- 操作功能区一 -->
-	<blockquote class="layui-elem-quote">
-		<button class="layui-btn" id="expand"><i class="larry-icon">&#xe8c0;</i> 全部展开</button>
-    	<button class="layui-btn" id="collapse"><i class="larry-icon">&#xe8c1;</i> 全部收起</button>
-		<form class="layui-form" style="float:right;">
-			<div class="layui-form-item" style="margin:0;">
-				<a href="javascript:" class="layui-btn layui-btn-small btnAdd" id="btnAdd">
-					<i class="layui-icon">&#xe608;</i> 添加分类
-				</a>
-			</div>
-		</form>
-	</blockquote>
-	
-    <div id="treeList" lay-filter="treeList" ></div>
+
+<!-- 引入基类模板 -->
+<extend name="Public:base" />
+
+<!-- 主体部分 -->
+<block name='content'> 
+
+	<!-- 功能操作区一 -->
+	<div class="layui-form toolbar">
+       <div class="layui-form-item">
+            <div class="layui-inline">
+                <div class="layui-input-inline" style="width: auto;">
+					<button class="layui-btn layui-btn-normal" id="expand"><i class="larry-icon">&#xe8c0;</i> 全部展开</button>
+			    	<button class="layui-btn layui-btn-warm" id="collapse"><i class="larry-icon">&#xe8c1;</i> 全部收起</button>
+					{:W('funcNode/btnAdd',array(添加分类))}
+               </div>
+           </div>
+       </div>
+	</div>
+
+	<!-- TREE渲染区 -->
+	<div id="treeList" lay-filter="treeList" ></div>
 	
 	<!-- 操作功能区二 -->
 	<script type="text/html" id="toolBar">
@@ -20,9 +27,5 @@
 		{:W('funcNode/btnDel',array(删除))}
 		{:W('funcNode/btnAdd2',array(添加))}
 	</script>
-    
-    <style type="text/css">
-		.value_col{
-			text-align:center !important;
-		}
-	</style>
+
+</block>

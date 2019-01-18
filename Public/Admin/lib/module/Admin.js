@@ -1,7 +1,7 @@
 /**
  *	管理人员
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-07-18
  */
 layui.use(['func','laydate'],function(){
@@ -48,7 +48,7 @@ layui.use(['func','laydate'],function(){
 					  return str;
 				  } }
 				  ,{ field:'login_num', width:100, title:'登录次数', align:'center' }
-				  ,{ fixed: 'right', width:430, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				  ,{ fixed: 'right', width:430, title: '功能操作', align:'center', toolbar: '#toolBar' }
 			];
 		
 		//【TABLE渲染】

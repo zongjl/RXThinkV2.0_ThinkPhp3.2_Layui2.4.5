@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit(); if(in_array('sys:' . lcfirst($app) . ':add',$funcList)): ?><a class="layui-btn layui-btn-xs layui-btn-normal btnAdd2" lay-event="edit"><i class="layui-icon">&#xe654;</i>添加</a><?php endif; ?>

@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 用户发票申请订单-服务类
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-22
  */
 namespace Admin\Service;
@@ -19,7 +28,7 @@ class InvoiceOrderService extends ServiceModel {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-23
      * (non-PHPdoc)
      * @see \Admin\Model\ServiceModel::getList()
@@ -28,6 +37,12 @@ class InvoiceOrderService extends ServiceModel {
         $param = I("request.");
         
         $map = [];
+        
+        //申请单状态
+        $status = (int)$param['status'];
+        if($status) {
+            $map['status'] = $status;
+        }
         
         //手机号码
         $mobile = trim($param['mobile']);
@@ -41,7 +56,7 @@ class InvoiceOrderService extends ServiceModel {
     /**
      * 订单确认
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-23
      */
     function confirmOrder() {
@@ -55,7 +70,7 @@ class InvoiceOrderService extends ServiceModel {
     /**
      * 发货
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-23
      */
     function shipping() {
@@ -94,6 +109,7 @@ class InvoiceOrderService extends ServiceModel {
         //订单信息
         $data = [
             'id'=>$result['order_id'],
+            'status'=>3,
             'receiver_name'=>$result['receiver_name'],
             'receiver_mobile'=>$result['receiver_mobile'],
             'province_id'=>$result['province_id'],

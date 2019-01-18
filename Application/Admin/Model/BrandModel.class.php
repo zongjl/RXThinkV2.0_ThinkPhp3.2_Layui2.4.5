@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 品牌-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-08
  */
 namespace Admin\Model;
@@ -16,7 +25,7 @@ class BrandModel extends CBaseModel {
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-08
      * (non-PHPdoc)
      * @see \Common\Model\CBaseModel::getInfo()
@@ -28,6 +37,11 @@ class BrandModel extends CBaseModel {
             //LOGO 
             if($info['logo']) {
                 $info['logo_url'] = IMG_URL . $info['logo'];
+            }
+            
+            //品牌类型
+            if($info['type']) {
+                $info['type_name'] = C("BRAND_TYPE")[$info['type']];
             }
             
         }

@@ -1,7 +1,7 @@
 /**
  *	用户开票申请单
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-10-23
  */
 layui.use(['func'],function(){
@@ -12,7 +12,18 @@ layui.use(['func'],function(){
 	
 	if(A=='index') {
 		
-		var status = $("#status").val();
+		var status = parseInt($("#status").val());
+		var option = {};
+		if(status==0) {
+			//全部订单
+			option = { fixed:'right', width:100, title: '功能操作', align:'center', toolbar: '#toolBar' };
+		}else if(status==1){
+			//待确认订单
+			option = { fixed:'right', width:250, title: '功能操作', align:'center', toolbar: '#toolBar' };
+		}else if(status==2) {
+			//已确认订单
+			option = { fixed:'right', width:180, title: '功能操作', align:'center', toolbar: '#toolBar' };
+		}
 		
 		//【TABLE列数组】
 		var cols = [
@@ -23,16 +34,14 @@ layui.use(['func'],function(){
 				,{ field:'receiver_mobile', width:130, title: '收票人手机', align:'center' }
 				,{ field:'format_amount', width:100, title: '开票总额', align:'center' }
 				,{ field:'format_freight_amount', width:100, title: '运费', align:'center' }
-				,{ field:'source_name', width:100, title: '订单来源', align:'center'}
 				,{ field:'format_add_time', width:180, title: '申请时间', align:'center' }
 				,{ field:'status_name', width:100, title: '申请单状态', align:'center'}
-				,{ field:'format_pay_time', width:180, title: '支付时间', align:'center' }
 				,{ field:'city_name', width:200, title: '所属地区', align:'center' }
 				,{ field:'address', width:200, title: '详细地址', align:'center' }
 				,{ field:'shipping_status_name', width:100, title: '物流状态', align:'center'}
 				,{ field:'format_shipping_time', width:180, title: '发货时间', align:'center' }
 				,{ field:'format_sign_time', width:180, title: '签收时间', align:'center' }
-				,{ fixed:'right', width:320, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				,option
 			];
 		
 		//【渲染TABLE】
@@ -46,7 +55,7 @@ layui.use(['func'],function(){
 				var url = cUrl + "/shipping?id="+data.id;
 				func.showWin("订单发货",url);
 			}
-		});
+		},cUrl+"/index?status="+status);
 		
 		//【设置弹框】
 		func.setWin("发票申请单");

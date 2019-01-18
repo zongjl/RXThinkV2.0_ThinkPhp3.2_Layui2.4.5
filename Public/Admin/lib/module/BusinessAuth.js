@@ -1,7 +1,7 @@
 /**
  *	商家认证
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-10-23
  */
 layui.use(['func'],function(){
@@ -23,7 +23,7 @@ layui.use(['func'],function(){
 				,{ field:'reason', width:300, title: '审核备注', align:'center' }
 				,{ field:'format_add_time', width:180, title: '认证时间', align:'center', sort: true }
 				,{ field:'format_upd_time', width:180, title: '审核时间', align:'center', sort: true }
-				,{ fixed:'right', width:100, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				,{ fixed:'right', width:100, title: '功能操作', align:'center', toolbar: '#toolBar' }
 			];
 		
 		//【渲染TABLE】

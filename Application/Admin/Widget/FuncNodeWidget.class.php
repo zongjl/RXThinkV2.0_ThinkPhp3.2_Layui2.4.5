@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 功能节点-挂件
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-23
  */
 namespace Admin\Widget;
@@ -16,7 +25,7 @@ class FuncNodeWidget extends Controller {
     /**
      * 添加节点【全局导航】
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-23
      */
     function btnAdd($funcName,$param=[]) {
@@ -27,7 +36,7 @@ class FuncNodeWidget extends Controller {
     /**
      * 批量删除节点【全局导航】
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-23
      */
     function btnDAll($funcName) {
@@ -37,7 +46,7 @@ class FuncNodeWidget extends Controller {
     /**
      * 常用按钮【全局导航】
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-08-01
      */
     function btnFunc($funcAct,$funcIcon,$funcName,$funcColor='',$funcType=1,$param=[]) {
@@ -55,7 +64,7 @@ class FuncNodeWidget extends Controller {
     /**
      * 添加节点【行数据】
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-08-18
      */
     function btnAdd2() {
@@ -65,7 +74,7 @@ class FuncNodeWidget extends Controller {
     /**
      * 编辑节点【行数据】
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-23
      */
     function btnEdit($funcName) {
@@ -84,7 +93,7 @@ class FuncNodeWidget extends Controller {
     /**
      * 查看详情【行数据】
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-23
      */
     function btnDetail($funcName) {
@@ -95,7 +104,7 @@ class FuncNodeWidget extends Controller {
     /**
      * 设置权限
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-08-28
      */
     function btnSetAuth($funcName) {

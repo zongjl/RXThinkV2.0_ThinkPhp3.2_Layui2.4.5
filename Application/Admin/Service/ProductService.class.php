@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 商品-服务类
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-16
  */
 namespace Admin\Service;
@@ -14,6 +23,9 @@ use Admin\Model\CateAttributeModel;
 use Admin\Model\CateAttributeValueModel;
 use Admin\Model\ProductSkuModel;
 use Admin\Model\ProductImageModel;
+use Admin\Model\ProductCateRelationModel;
+use Admin\Model\CateModel;
+use Admin\Model\ProductAttributeRelationModel;
 class ProductService extends ServiceModel {
     function __construct() {
         parent::__construct();
@@ -23,7 +35,7 @@ class ProductService extends ServiceModel {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-19
      * (non-PHPdoc)
      * @see \Admin\Model\ServiceModel::getList()
@@ -45,7 +57,7 @@ class ProductService extends ServiceModel {
     /**
      * 添加或编辑
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-19
      * (non-PHPdoc)
      * @see \Admin\Model\ServiceModel::edit()
@@ -53,21 +65,21 @@ class ProductService extends ServiceModel {
     function edit() {
         $data = I('post.', '', 'trim');
         $data['is_sale'] = (isset($data['is_sale']) && $data['is_sale']=="on") ? 1 : 2;
-        $data['is_hot'] = (isset($data['is_hot']) && $data['is_hot']=="on") ? 1 : 2;
-        $data['is_new'] = (isset($data['is_new']) && $data['is_new']=="on") ? 1 : 2;
-        $data['is_best'] = (isset($data['is_best']) && $data['is_best']=="on") ? 1 : 2;
-        $data['status'] = (isset($data['status']) && $data['status']=="on") ? 1 : 2;
         
         //商品单价
         $data['price'] = $data['price']*100;
         
         //商品分类
-        $cateList = $data['category_id'];
-        if(!is_array($cateList)) {
-            return message('请选择商品分类',false);
+        $cateStr = $data['category_id'];
+        if(!$cateStr) {
+            return message('请选择商品分类', false);
         }
-        $cateStr = implode(',', array_keys($cateList));
-        $data['category_id'] = $cateStr;
+        
+        //属性分类
+        $attrStr = $data['attribute_id'];
+        if(!$attrStr) {
+            return message('请选择商品属性', false);
+        }
         
         //商品封面
         $cover = trim($data['cover']);
@@ -93,14 +105,104 @@ class ProductService extends ServiceModel {
         
         //商品详情
         \Zeus::saveImageByContent($data['content'],$data['name'],"product");
+
+        //开启事务
+        $this->mod->startTrans();
+
+        $error = '';
+        $rowId = $this->mod->edit($data, $error);
+        if(!$rowId) {
+            //事务回滚
+            $this->mod->rollback();
+            return message($error,false);
+        }
         
-        return parent::edit($data);
+        //商品分类附表处理
+        $productCateRelationMod = new ProductCateRelationModel();
+        
+        //获取当前商品所有分类
+        $cateList = $productCateRelationMod->where(['product_id'=>$rowId])->getField('id', true);
+        if($cateList) {
+            foreach ($cateList as $val) {
+                $productCateRelationMod->drop($val);
+            }
+        }
+        
+        //写入新的数据
+        $cateArr = explode(',', $cateStr);
+        if($cateArr) {
+            $cateMod = new CateModel();
+            foreach ($cateArr as $vt) {
+                $cateInfo = $cateMod->getInfo($vt);
+                if(!$cateInfo) continue;
+                
+                $info = $productCateRelationMod->where([
+                    'product_id'=>$rowId,
+                    'category_id'=>$vt,
+                ])->find();
+                if($info) {
+                    //恢复被删除的数据
+                    $productCateRelationMod->where(['id'=>$info['id']])->setField('mark',1);
+                }else{
+                    //创建新的数据
+                    $item = [
+                        'product_id'=>$rowId,
+                        'p_category_id'=>(int)$cateInfo['parent_id'],
+                        'category_id'=>$vt,
+                    ];
+                    $productCateRelationMod->edit($item);
+                }
+            }
+        }
+        
+        //商品属性业务处理
+        $productAttrRelationMod = new ProductAttributeRelationModel();
+        $attrList = $productAttrRelationMod->where(['product_id'=>$rowId])->getField('id', true);
+        if($attrList) {
+            foreach ($attrList as $val) {
+                $productAttrRelationMod->drop($val);
+            }
+        }
+        //写入新数据
+        $attrArr = explode(',', $attrStr);
+        if($attrArr) {
+            $cateAttrValueMod = new CateAttributeValueModel();
+            foreach ($attrArr as $vt) {
+                $attrValueInfo = $cateAttrValueMod->getInfo($vt);
+                if(!$attrValueInfo) continue;
+        
+                $info = $productAttrRelationMod->where([
+                    'product_id'=>$rowId,
+                    'category_attribute_value_id'=>$vt,
+                ])->find();
+                if($info) {
+                    //恢复被删除的数据
+                    $productAttrRelationMod->where(['id'=>$info['id']])->setField('mark',1);
+                }else{
+                    //创建新的数据
+                    $item = [
+                        'product_id'=>$rowId,
+                        'category_attribute_id'=>(int)$attrValueInfo['category_attribute_id'],
+                        'attr_name'=>$attrValueInfo['category_attribute_name'],
+                        'category_attribute_value_id'=>$vt,
+                        'attr_value'=>$attrValueInfo['attribute_value'],
+                    ];
+                    $productAttrRelationMod->edit($item);
+                }
+            }
+        }
+
+        //提交事务
+        $this->mod->commit();
+        
+        return message();
+        
     }
     
     /**
      * 设置产品规格状态
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-25
      */
     function setIsSpec() {
@@ -129,7 +231,7 @@ class ProductService extends ServiceModel {
     /**
      * 产品规格管理
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-24
      */
     function productModel() {
@@ -244,7 +346,7 @@ class ProductService extends ServiceModel {
     /**
      * 获取产品SKU列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-25
      */
     function getSkuList($productId) {
@@ -283,7 +385,7 @@ class ProductService extends ServiceModel {
     /**
      * SKU图集
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-11-01
      */
     function skuImgs() {
@@ -322,6 +424,136 @@ class ProductService extends ServiceModel {
         }
         return message($error,false);
         
+    }
+    
+    /**
+     * 阶梯报价
+     * 
+     * @author 牧羊人
+     * @date 2018-12-24
+     */
+    function ladderPrice() {
+        $data = I('post.', '', 'trim');
+        // 商品ID
+        $productId = (int)$data['product_id'];
+        if(!$productId) {
+            return message('商品ID不能为空', false);
+        }
+        // 最小值数组
+        $min_num = $data['min_num'];
+        if(!$min_num || !is_array($min_num)) {
+            return message('最小值不能为空', false);
+        }
+        // 最大值数组
+        $max_num = $data['max_num'];
+        if(!$max_num || !is_array($max_num)) {
+            return message('最大值不能为空', false);
+        }
+        // 阶梯报价价格
+        $price = $data['price'];
+        if(!$price || !is_array($price)) {
+            return message('阶梯报价价格不能为空', false);
+        }
+        
+        $totalNum = count($min_num);
+        $list = [];
+        
+        // 最低单价留存，专为搜索使用
+        $minPrice = 0;
+        for ($i=0; $i<$totalNum; $i++) {
+            // 最小值
+            $minValue = (int)$min_num[$i];
+            if(!$minValue) {
+                continue;
+            }
+            // 最大值
+            $maxValue = (int)$max_num[$i];
+            if(!$maxValue && $i<$totalNum-1) {
+                continue;
+            }
+            // 单价
+            $amount = strval($price[$i])*1000000;
+            if($i==0) {
+                $minPrice = $amount;
+            }
+            $subItem = [
+                'min_num'=>$min_num[$i],
+                'max_num'=>$max_num[$i],
+                'price'=>$amount,
+            ];
+            if($i==$totalNum-1 && !$maxValue) {
+                $subItem['is_ladder'] = 2;
+            }else{
+                $subItem['is_ladder'] = 1;
+            }
+            $list[] = $subItem;
+        }
+        if($totalNum!=count($list)) {
+            return message("数据异常", false);
+        }
+        $item = [
+            'id'=>$productId,
+            'ladder_price'=>serialize($list),
+            'max_ladder_price'=>$minPrice,
+        ];
+        $error = '';
+        $result = $this->mod->edit($item,$error);
+        if($result) {
+            return message();
+        }
+        return message($error, false);
+        
+    }
+    
+    /**
+     * 选择属性
+     * 
+     * @author 牧羊人
+     * @date 2018-12-26
+     */
+    function attrSelect() {
+        $attribute_id = I('get.attribute_id', '');
+        $itemArr = [];
+        if($attribute_id) {
+            $itemArr = explode(',', $attribute_id);
+        }
+        $list = [];
+        $cateAttrMod = new CateAttributeModel();
+        $cateAttrValueMod = new CateAttributeValueModel();
+        $result = $cateAttrMod->where(['type'=>1,'status'=>1,'mark'=>1])->getField('id', true);
+        if($result) {
+            foreach ($result as $val) {
+                $info = $cateAttrMod->getInfo($val);
+                if(!$info) continue;
+        
+                // 获取子级
+                $item = [];
+                $childList = $cateAttrValueMod->where([
+                    'category_attribute_id'=>$val,
+                    'status'=>1,
+                    'mark'=>1,
+                ])->getField('id',true);
+                if($childList) {
+                    foreach ($childList as $vt) {
+                        $info2 = $cateAttrValueMod->getInfo($vt);
+                        if(!$info2) continue;
+                        $item[] = [
+                            'id'=>$info2['id'],
+                            'name'=>$info2['attribute_value'],
+                            'selected'=>in_array($info2['id'], $itemArr),
+                        ];
+                    }
+                }
+        
+                $list[] = [
+                    'id'=>$info['id'],
+                    'name'=>$info['name'],
+                    'list'=>$item,
+                ];
+        
+            }
+        }
+        return $list;
     }
     
 }

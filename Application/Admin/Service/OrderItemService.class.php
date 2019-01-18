@@ -3,7 +3,7 @@
 /**
  * 订单产品-服务类
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-08
  */
 namespace Admin\Service;
@@ -18,7 +18,7 @@ class OrderItemService extends ServiceModel {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-09
      * (non-PHPdoc)
      * @see \Admin\Model\ServiceModel::getList()

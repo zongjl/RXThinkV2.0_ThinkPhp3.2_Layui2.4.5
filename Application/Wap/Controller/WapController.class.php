@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * WAP站基类控制器
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  */
 namespace Wap\Controller;
@@ -28,7 +37,7 @@ class WapController extends BaseController {
     /**
      * 初始化方法
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-09-30
      * (non-PHPdoc)
      * @see \Common\Controller\BaseController::_initialize()
@@ -59,7 +68,7 @@ class WapController extends BaseController {
     /**
      * 初始化系统配置
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-09-27
      */
     private function initConfig() {
@@ -82,7 +91,7 @@ class WapController extends BaseController {
     /**
      * 初始化数据
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-03-29
      */
     function initSession() {
@@ -97,7 +106,7 @@ class WapController extends BaseController {
     /**
      * 检查登录状态
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-09-28
      */
     function checkLogin() {
@@ -131,7 +140,7 @@ class WapController extends BaseController {
     /**
      * 模板渲染
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-11
      */
     public function render($tpl="", $data=array()) {
@@ -159,7 +168,7 @@ class WapController extends BaseController {
     /**
      * 输出JSON数据
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-09-27
      */
     public function jsonReturn() {

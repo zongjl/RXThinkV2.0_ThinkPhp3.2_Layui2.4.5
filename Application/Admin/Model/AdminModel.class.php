@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 人员管理-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-06-21
  */
 namespace Admin\Model;
@@ -28,32 +37,10 @@ class AdminModel extends CBaseModel {
         array('upd_time','time',3,'function'),
     );
     
-//     //自动验证
-//     protected $_validate = array (
-//         array('name', 'require', '姓名不能为空！', 1, '', 3),
-//         array('tel', 'require', '手机号不能为空！', 1, '', 3),
-//         array('password', 'require', '密码不能为空！', 1, '', 1),
-//         array('email', 'require', '邮箱不能为空！', 1, '', 3),
-//         array('ID_number', 'require', '身份证号不能为空！', 1, '', 3),
-//         array('ID_positive', 'require', '身份证正面照不能为空！', 1, '', 1),
-//         array('ID_opposite', 'require', '身份证反面照不能为空！', 1, '', 1),
-//         array('ID_handle', 'require', '手持身份证照不能为空！', 1, '', 1),
-//         array('bankcard', 'require', '银行卡照片不能为空！', 1, '', 1),
-//         array('openbank', 'require', '开户行不能为空！', 1, '', 3),
-//         array('accountname', 'require', '银行账户名不能为空！', 1, '', 3),
-//         array('bankaccount', 'require', '银行账户号不能为空！', 1, '', 3),
-//         array('tel', '/^\d{11}$/', '手机号不合法！', 1, 'regex', 3),
-//         array('email', 'email', '邮箱不合法！', 1, '', 3),
-//         array('ID_number', '/^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/', '身份证号不合法！', 1, 'regex', 3),
-//         array('tel', '', '手机号已经存在！', 1, 'unique', 3), // 新增修改时候验证tel字段是否唯一
-//         array('email', '', '邮箱已经存在！', 1, 'unique', 3), // email唯一
-//         array('ID_number', '', '身份证号已经存在！', 1, 'unique', 3), // 身份证号唯一
-//     );
-    
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-12
      */
     public function getInfo($id,$flag=false) {
@@ -89,6 +76,7 @@ class AdminModel extends CBaseModel {
             //获取部门
             if($info['dept_id']) {
                 $adminDepMod = new AdminDepModel();
+                $adminDepInfo = $adminDepMod->getInfo($info['dept_id']);
                 $adminDepName = $adminDepMod->getDepName($info['dept_id'],">>");
                 $info['dept_name'] = $adminOrgInfo['name'] . ">>" . $adminDepName;
             }
@@ -124,6 +112,23 @@ class AdminModel extends CBaseModel {
                         $authList[$kt][] = $vt;
                     }
                 }
+                
+                //组织权限
+                $orgAuth = $adminOrgInfo['auth'];
+                if(is_array($orgAuth)) {
+                    foreach ($orgAuth as $ko=>$vo) {
+                        $authList[$ko][] = $vo;
+                    }
+                }
+                
+                //部门权限
+                $depAuth = $adminDepInfo['auth'];
+                if(is_array($depAuth)) {
+                    foreach ($depAuth as $k=>$v) {
+                        $authList[$k][] = $v;
+                    }
+                }
+                
                 $result = array();
                 foreach ($authList as $key=>$val) {
                     if(!in_array($key, array_keys($result))) {
@@ -147,7 +152,7 @@ class AdminModel extends CBaseModel {
     /**
      * 获取所有人员
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-12
      */
     function getAll() {

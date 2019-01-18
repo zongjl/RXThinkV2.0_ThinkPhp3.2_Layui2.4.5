@@ -1,4 +1,4 @@
-<form class="layui-form" action="">
+<form class="layui-form info-form" action="">
 	<input name="id" id="id" type="hidden" value="{$info.id}">
 	<div class="layui-form-item">
 		<label class="layui-form-label">标签名称：</label>
@@ -9,7 +9,7 @@
 	<div class="layui-form-item">
 		<label class="layui-form-label">标签类型：</label>
 		<div class="layui-input-block">
-			{:W('common/singleSelect',array('type|1|标签类型|name|id',C('TAGS_TYPE'),$info['type']))}
+			{:W('common/singleSelect',array('type|1|标签类型|name|id',C('TAGS_TYPE'),$info['type'] ? $info['type'] : 1))}
 		</div>
 	</div>
 	<div class="layui-form-item">

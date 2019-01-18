@@ -12,11 +12,11 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">	
 	<meta name="apple-mobile-web-app-capable" content="yes">	
 	<meta name="format-detection" content="telephone=no">	
-	<link rel="Shortcut Icon" href="/Public/Admin/images/favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="/Public/Admin/layui/css/layui.css" media="all">
-	<link rel="stylesheet" type="text/css" href="/Public/Admin/css/global.css" media="all">
-	<link rel="stylesheet" type="text/css" href="/Public/Admin/css/animate.css" media="all">
-	<link rel="stylesheet" type="text/css" href="/Public/Admin/css/login.css" media="all">
+	<link rel="Shortcut Icon" href="__ADMIN__/images/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="__ADMIN__/layui/css/layui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="__ADMIN__/css/global.css" media="all">
+	<link rel="stylesheet" type="text/css" href="__ADMIN__/css/animate.css" media="all">
+	<link rel="stylesheet" type="text/css" href="__ADMIN__/css/login.css" media="all">
 </head>
 <body>
 <div class="layui-fluid">
@@ -25,7 +25,7 @@
              <div class="title">{$siteName}</div>
              <p class="info"></p>
              <div class="user-info">
-             	  <div class="avatar"><img src="/Public/Admin/images/photo/admin.png" alt=""></div>
+             	  <div class="avatar"><img src="__ADMIN__/images/photo/admin.png" alt=""></div>
              	  <form class="layui-form" id="larry_form">
                         <div class="layui-form-item">
 							<label class="layui-form-label">用户名:</label>
@@ -54,7 +54,7 @@
 	</div>
 </div>
 <!-- 加载js文件-->
-<script type="text/javascript" src="/Public/Admin/layui/layui.js"></script> 
+<script type="text/javascript" src="__ADMIN__/layui/layui.js"></script> 
 <script>
     if(window != top){
         sessionStorage.clear();
@@ -64,9 +64,9 @@
     layui.cache.page = 'Login';
     layui.config({
        version:"2.0.7",
-       base:'/Public/Admin/'  //实际使用时，建议改成绝对路径
+       base:'__ADMIN__'  //实际使用时，建议改成绝对路径
     }).extend({
-        larry:'js/base'
+        larry:'/js/base'
     }).use('larry');
 </script>
 </body>

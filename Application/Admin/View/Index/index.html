@@ -27,7 +27,7 @@
         	<span class="mini-logo"><img src="__ADMIN__/images/logo_mini.png" alt=""></span>
          	<a class="layui-logo larryms-logo">{$nickName}</a>
          	<span class="larryms-switch larryms-icon-fold" id="menufold"><i class="larry-icon larry-fold7"></i></span>
-         	<div class="larryms-mobile-menu" id="larrymsMobileMenu"><i class="larry-icon larry-caidan1"></i></div>
+         	<div class="larryms-mobile-menu" id="larrymsMobileMenu"><i class="larry-icon yun-liebiao"></i></div>
         </div>
         <div class="larryms-extend">
          	<div class="larryms-topbar-menu larryms-hide-xs clearfix">
@@ -56,7 +56,7 @@
                         <a id="lock"><i class="larry-icon larry-diannao1"></i><cite>锁屏</cite></a>
                     </li> -->
                     <li class="layui-nav-item">
-                        <a id="fullScreen"><i class="larry-icon yun-quanping1"></i><cite>全屏</cite></a>
+                        <a id="fullScreen"><i class="larry-icon yun-quanping1"></i><cite>全屏切换</cite></a>
                     </li>
                     <li class="layui-nav-item" lay-unselect>
                         <a id="clearCached"><i class="larry-icon yun-qingchu"></i><cite>清除缓存</cite></a>
@@ -79,7 +79,7 @@
                 <!-- 管理员信息      -->
                 <div class="user-info">
                     <div class="photo">
-                        <img src="<if condition='$adminInfo.avatar_url neq null'>{$adminInfo.avatar_url}<else/>__ADMIN__/images/user.jpg</if>" id="user_photo" alt="">
+                        <img src="<if condition='$adminInfo.avatar_url neq null'>{$adminInfo.avatar_url}<else/>__ADMIN__/images/logo_mini.png</if>" id="user_photo" alt="">
                     </div>
                     <p><span id="uname">【{$adminInfo.realname}】</span>您好！欢迎登录</p>
                 </div>
@@ -96,14 +96,14 @@
 		<div class="layui-body pos-a larryms-right" id="larry_right">
 			<div class="layui-tab larryms-tab" id="larry_tab" lay-filter="larryTab">
                 <div class="larryms-title-box clearfix" id="larryms_title">
-                    <div class="larryms-btn-default larryms-press larryms-pull-left hide" id="goLeft"><i class="larry-icon larry-top-left-jt"></i></div> 
+                    <div class="larryms-btn-default larryms-press larryms-pull-left hide" id="goLeft"><i class="larry-icon yun-arrowDoLRight"></i></div> 
                     <ul class="layui-tab-title larryms-tab-title" lay-allowclose='false' id="larry_tab_title" lay-filter='larrymsTabTitle'>
                         <li class="layui-this" id="larryms_home" lay-id="0" data-group="0" data-id="larryms-home" fresh="1" data-url="html/main1.html">
                             <i class="larry-icon yun-shouye" data-icon="yun-shouye" data-font="larry-icon"></i><cite>后台首页</cite>
                         </li>
                     </ul>
                     <div class="larryms-btn-group clearfix">
-                        <div class="larryms-btn-default larryms-press larryms-pull-right hide" id="goRight"><i class="larry-icon larry-gongyongshuangjiantouyou"></i></div>
+                        <div class="larryms-btn-default larryms-press larryms-pull-right hide" id="goRight"><i class="larry-icon yun-shuangjiantouyou"></i></div>
                         <div class="refresh larryms-press" id="larryms_refresh">
                             <i class="larry-icon yun-shuaxin"></i>
                             <cite>刷新</cite>
@@ -149,21 +149,19 @@
 	<!-- 底部固定区域 -->
 	<div class="layui-footer larryms-footer" data-show='on' id="larry_footer">
 		 <div class="copyright inline-block pos-al"><a href="javascript:">最终解释权归【RXThink研发团队】所有</a></div>
-         <!--<p class="block">系统研发负责人：相约在冬季(QQ:1175401194)</p>-->
-		 <div class="larryms-info inline-block pos-ar">当前版本：V2.0<i class="layui-icon">&#xe67c;</i></a></div>
+         <p class="block">研发负责人：相约在冬季(QQ:1175401194)</p>
+		 <div class="larryms-info inline-block pos-ar">当前版本：V2.0.0<i class="layui-icon">&#xe67c;</i></a></div>
 	</div>
 </div>
 <!-- 加载js文件-->
 <script type="text/javascript" src="__ADMIN__/layui/layui.js"></script>
 <script type="text/javascript">
-//layui.cache.menusUrl = '/assets/menudatas.json';//这里设置 菜单数据项接口地址 或data参数
 layui.cache.menusUrl = "{:U('Menu/getMenuList')}";
 layui.cache.page = '{$app}'; 
-//说明：并非一个页面只能加载一个模块 可以这样定义：'index,common';也并非每个页面都要定义一个模块，事实上模块根据功能需要可以公用
 //layui.cache.rightMenu = 'custom'; //默认开启页面右键菜单，设置为 custom 时需要自定义右键菜单，设置为false 关闭右键菜单
 layui.config({
    version:"2.0.7",
-   base:'__ADMIN__'  //实际使用时，建议改成绝对路径
+   base:'__ADMIN__'
 }).extend({
     larry:'/js/base'
 }).use('larry');

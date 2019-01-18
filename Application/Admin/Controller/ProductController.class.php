@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 商品-控制器
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-16
  */
 namespace Admin\Controller;
@@ -11,6 +20,7 @@ use Admin\Model\ProductModel;
 use Admin\Service\ProductService;
 use Admin\Service\CateAttributeService;
 use Admin\Model\ProductImageModel;
+use Admin\Service\CateService;
 class ProductController extends BaseController {
     function __construct() {
         parent::__construct();
@@ -19,9 +29,24 @@ class ProductController extends BaseController {
     }
     
     /**
+     * 获取数据列表
+     * 
+     * @author 牧羊人
+     * @date 2018-12-18(non-PHPdoc)
+     * @see \Admin\Controller\BaseController::index()
+     */
+    function index() {
+        if($_GET['simple']) {
+            $this->render("product.simple.html");
+            return;
+        }
+        parent::index();
+    }
+    
+    /**
      * 设置规格状态
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-25
      */
     function setIsSpec() {
@@ -35,7 +60,7 @@ class ProductController extends BaseController {
     /**
      * 商品规格
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-24
      */
     function productModel() {
@@ -62,7 +87,7 @@ class ProductController extends BaseController {
     /**
      * 上传SKU图集
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-11-01
      */
     function skuImgs() {
@@ -84,6 +109,53 @@ class ProductController extends BaseController {
             $info['sku_id'] = $skuId;
         }
         $this->assign('info',$info);
+        $this->render();
+    }
+    
+    /**
+     * 阶梯报价
+     * 
+     * @author 牧羊人
+     * @date 2018-12-24
+     */
+    function ladderPrice() {
+        if(IS_POST) {
+            $message = $this->service->ladderPrice();
+            $this->ajaxReturn($message);
+            return ;
+        }
+        $productId = (int)$_GET['product_id'];
+        if($productId) {
+            $info = $this->mod->getInfo($productId);
+        }else{
+            $info['id'] = $productId;
+        }
+        $this->assign('info',$info);
+        $this->render();
+    }
+    
+    /**
+     * 分类选择【商品选择分类】
+     *
+     * @author 牧羊人
+     * @date 2018-12-19
+     */
+    function cateSelect() {
+        $cateService = new CateService();
+        $list = $cateService->cateSelect();
+        $this->assign('list',$list);
+        $this->render();
+    }
+    
+    /**
+     * 选择属性
+     * 
+     * @author 牧羊人
+     * @date 2018-12-26
+     */
+    function attrSelect() {
+        $list = $this->service->attrSelect();
+        $this->assign('list', $list);
         $this->render();
     }
     

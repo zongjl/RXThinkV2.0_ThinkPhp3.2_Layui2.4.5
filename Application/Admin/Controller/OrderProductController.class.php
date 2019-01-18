@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 订单产品-控制器
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-22
  */
 namespace Admin\Controller;
@@ -19,15 +28,15 @@ class OrderProductController extends BaseController {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      * (non-PHPdoc)
      * @see \Admin\Controller\BaseController::index()
      */
     function index() {
-        $order_id = (int)$_GET['order_id'];
-        $this->assign('order_id',$order_id);
-        parent::index();
+        parent::index([
+            'order_id'=>(int)$_GET['order_id'],
+        ]);
     }
     
 }

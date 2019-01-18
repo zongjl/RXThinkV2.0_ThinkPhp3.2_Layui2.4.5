@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 部门-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-17
  */
 namespace Admin\Model;
@@ -21,7 +30,7 @@ class AdminDepModel extends CBaseModel {
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-17
      * (non-PHPdoc)
      * @see \Common\Model\CBaseModel::getInfo()
@@ -36,6 +45,11 @@ class AdminDepModel extends CBaseModel {
                 $info['parent_name'] = $pInfo['name'];
             }
             
+            //权限反序列化
+            if($info['auth']) {
+                $info['auth'] = unserialize($info['auth']);
+            }
+            
         }
         return $info;
     }
@@ -43,7 +57,7 @@ class AdminDepModel extends CBaseModel {
     /**
      * 获取子级
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-03-06
      */
     function getChilds($parentId,$flag=false) {
@@ -70,7 +84,7 @@ class AdminDepModel extends CBaseModel {
     /**
      * 获取部门名称
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-17
      */
     function getDepName($depId, $delimiter="") {

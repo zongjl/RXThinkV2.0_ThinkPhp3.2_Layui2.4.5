@@ -1,4 +1,13 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 基础分页的相同代码封装，使前台的代码更少
@@ -22,7 +31,7 @@ function getPage($count, $pagesize = 10) {
 /**
  * 下拉框组件
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-10
  * @param unknown $arr
  * @param string $selected
@@ -58,7 +67,7 @@ function make_option($arr, $selected='', $show_field='', $val_field='') {
 /**
  * 单选按钮组件
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-22
  * @param unknown $arr
  * @param unknown $name
@@ -100,7 +109,7 @@ function make_radio($arr, $name, $checked='', $val, $field, $show_num=10) {
 /**
  * 生成复选框checkbox
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-24
  * @param unknown $arr
  * @param unknown $name

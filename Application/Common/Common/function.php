@@ -1,11 +1,18 @@
 <?php
- 
-#系统公共函数类
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 返回消息对象
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-06
  */
 if (defined('IS_API')) {
@@ -28,7 +35,7 @@ if (defined('IS_API')) {
 /**
  * 获取数组中某个字段的所有值
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-23
  * @param unknown $value
  * @param string $name
@@ -52,7 +59,7 @@ function array_key_value($arr, $name=""){
 /**
  * 文件上传
  *
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-16
  */
 function uploadOne($files) {
@@ -85,7 +92,7 @@ function uploadOne($files) {
 /**
  * APP图片上传
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  */
 function app_upload_image($path,$maxSize=52428800){
@@ -114,7 +121,7 @@ function app_upload_image($path,$maxSize=52428800){
 /**
  * 计算执行耗费时间
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-18
  * @return number 返回耗时(单位：秒)
  */
@@ -127,7 +134,7 @@ function get_runtime(){
 /**
  * 检查是否登录
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @return boolean
  */
@@ -142,7 +149,7 @@ function check_login(){
 /**
  * 获取用户ID
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  */
 function get_uid(){
@@ -152,7 +159,7 @@ function get_uid(){
 /**
  * 实例化阿里云OSS
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  */
 function get_oss() {
@@ -165,7 +172,7 @@ function get_oss() {
 /**
  * 上传文件到OSS并删除本地文件
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $path 文件路径
  */
@@ -192,7 +199,7 @@ function oss_upload($path,$del=false) {
 /**
  * 删除OSS上指定文件
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $object 文件路径(例如： /Public/README.md文件  传Public/README.md 即可)
  */
@@ -207,7 +214,7 @@ function oss_delet_object($object) {
 /**
  * APP视频上传
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $path 上传路径
  * @param number $maxSize 最大上传大小
@@ -238,7 +245,7 @@ function app_upload_video($path,$maxSize=52428800) {
 /**
  * 上传文件类型控制,此方法仅限ajax上传使用
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * 
  * @param string $path 字符串 保存文件路径示例：/Uploads/img/
@@ -293,7 +300,7 @@ function ajax_upload($path='file',$format='empty',$maxSize='52428800') {
 /**
  * 获取文件格式
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $filename 文件名称
  */
@@ -331,7 +338,7 @@ function get_file_format($filename) {
 /**
  * 获取完整的网络连接
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  */
 function get_url($path) {
@@ -355,7 +362,7 @@ function get_url($path) {
 /**
  * 删除指定的标签和内容
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $tags 需要删除的标签数组
  * @param unknown $str 数据源
@@ -381,7 +388,7 @@ function strip_html_tags($tags,$str,$content=0) {
 /**
  * 字符串截取
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * 
  * @param unknown $str 需要转换的字符串
@@ -410,7 +417,7 @@ function sub_str($str, $start=0, $length, $suffix=true, $charset="utf-8") {
 /**
  * 按符号截取字符串的指定部分
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * 
  * @param unknown $str 需要截取的字符串
@@ -447,7 +454,7 @@ function cut_str($str,$sign,$number) {
 /**
  * 显示验证码
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  */
 function show_verify($config=array()) {
@@ -469,7 +476,7 @@ function show_verify($config=array()) {
 /**
  * 检查验证码
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  */
 function check_verify($code) {
@@ -480,7 +487,7 @@ function check_verify($code) {
 /**
  * 获取URL根域名
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $domain 域名
  */
@@ -504,7 +511,7 @@ function get_url_to_domain($domain) {
 /**
  * 发送邮件
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * 
  * @param unknown $address 需要发送的邮箱地址 发送给多个地址需要写成数组形式
@@ -571,7 +578,7 @@ function send_email($address,$subject,$content) {
 /**
  * 生成不重复的随机数
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * 
  * @param number $start 需要生成的数字开始范围
@@ -594,7 +601,7 @@ function get_rand_number($start=1,$end=10,$length=4) {
 /**
  * 实例化Page
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * 
  * @param unknown $count 总数
@@ -607,7 +614,7 @@ function init_page($count,$limit=10) {
 /**
  * 获取分页数据
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * 
  * @param unknown $model model对象
@@ -637,7 +644,7 @@ function get_page_data($model,$map,$order='',$limit=10) {
 /**
  * 使用curl获取远程数据
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * 
  * @param unknown $url URL连接
@@ -660,7 +667,7 @@ function curl_get_contents($url) {
 /**
  * 计算星座
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $month 月
  * @param unknown $day 日期
@@ -695,7 +702,7 @@ function get_zodiac_sign($month, $day) {
 /**
  * 将路径转换加密
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $file_path 路径
  */
@@ -703,7 +710,7 @@ function get_zodiac_sign($month, $day) {
 /**
  *  * 将路径转换加密
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $file_path 路径
  * @return string 转换后的路径
@@ -715,7 +722,7 @@ function path_encode($file_path) {
 /**
  * 将路径解密
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $file_path 加密后的字符串
  * @return string 解密后的路径
@@ -727,7 +734,7 @@ function path_decode($file_path) {
 /**
  * 传入时间戳,计算距离现在的时间
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $time 时间戳
  * @return string 返回多少以前
@@ -755,7 +762,7 @@ function word_time($time) {
 /**
  * 生成缩略图
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $image_path 原图path
  * @param number $width 缩略图的宽
@@ -776,7 +783,7 @@ function crop_image($image_path,$width=170,$height=170) {
 /**
  * 把用户输入的文本转义（主要针对特殊符号和emoji表情）
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $str 需要转移的字符
  * @return unknown|string|mixed 返回的转移后的值
@@ -795,7 +802,7 @@ function emoji_encode($str) {
 /**
  * 将utf-16的emoji表情转为utf8文字形
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $str 需要转的字符串
  * @return mixed|string 转完成后的字符串
@@ -827,7 +834,7 @@ function escape_sequence_decode($str) {
 /**
  * 检测是否是手机访问
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @return boolean
  */
@@ -856,7 +863,7 @@ function is_mobile_visit() {
 /**
  * 获取当前访问的设备类型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @return number 0：其他  1：iOS  2：Android
  */
@@ -877,7 +884,7 @@ function get_device_type() {
 /**
  * 生成PDF
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param string $html 需要生成的内容
  */
@@ -931,7 +938,7 @@ function pdf($html='<h1 style="color:red">hello word</h1>') {
 /**
  * 数组转xls格式的excel文件
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $data 需要生成excel文件的数组
  * @param string $filename 生成的excel文件名
@@ -977,7 +984,7 @@ function create_xls($data,$filename='simple.xls') {
 /**
  * 数据转csv格式的excle
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $data 需要转的数组
  * @param string $header 要生成的excel表头
@@ -1019,7 +1026,7 @@ function create_csv($data,$header=null,$filename='simple.csv') {
 /**
  * 导入excel文件
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-09-30
  * @param unknown $file excel文件路径
  * @return Ambigous <multitype:, mixed> excel文件内容数组
@@ -1063,7 +1070,7 @@ function import_excel($file) {
 /**
  * 取汉字的第一个字的首字母
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-11-22
  * @param unknown $str
  * @return string|NULL
@@ -1126,6 +1133,22 @@ function getFirstCharter($str) {
     if ($asc >= -11055 && $asc <= -10247)
         return 'Z';
     return null;
+}
+
+/**
+ * 获取城市信息
+ *
+ * @author 牧羊人
+ * @date 2018-04-16
+ */
+function ip2city($ip){
+    $url = "http://ip.taobao.com/service/getIpInfo.php?ip={$ip}";
+    $ip = json_decode(file_get_contents($url));
+    if((string)$ip->code == '1'){
+        return '';
+    }
+    $data = (array)$ip->data;
+    return $data['region'] . " " . $data['city'] . " " . $data['isp'];
 }
 
 ?>

@@ -1,15 +1,25 @@
 <?php 
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 系统人员管理-服务类
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-06
  */
 namespace Admin\Service;
 use Admin\Model\ServiceModel;
 use Admin\Model\AdminModel;
 use Admin\Model\AdminRmrModel;
+use Admin\Model\AdminLogModel;
 class AdminService extends ServiceModel {
     public function __construct() {
         parent::__construct();
@@ -19,7 +29,7 @@ class AdminService extends ServiceModel {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-17
      * (non-PHPdoc)
      * @see \Admin\Model\BaseModel::getList()
@@ -43,7 +53,7 @@ class AdminService extends ServiceModel {
     /**
      * 添加或编辑
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-19(non-PHPdoc)
      * @see \Admin\Model\BaseModel::edit()
      */
@@ -78,7 +88,7 @@ class AdminService extends ServiceModel {
     /**
      * 设置人员角色
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-19
      */
     function setRole() {
@@ -143,7 +153,7 @@ class AdminService extends ServiceModel {
     /**
      * 重置密码
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-04-01
      */
     function resetPwd($post) {
@@ -178,7 +188,7 @@ class AdminService extends ServiceModel {
     /**
      * 系统人员登陆
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-06
      */
     public function login() {
@@ -231,6 +241,18 @@ class AdminService extends ServiceModel {
         if(!$result) {
             return message('登录失败',false);
         }
+        
+        //创建登录日志
+        $log = [
+            'title'=>"登录系统",
+            'content'=>"您好【".$info['realname']."】,您于【".date('Y-m-d H:i:s',time())."】成功登录系统",
+            'status'=>1,
+            'login_ip'=>$_SERVER['REMOTE_ADDR'],
+            'city_name'=>ip2city($data['login_ip']),
+        ];
+        $adminLogMod = new AdminLogModel();
+        $adminLogMod->edit($log);
+        
         return message("登录成功", true);
         
     }
@@ -238,7 +260,7 @@ class AdminService extends ServiceModel {
     /**
      * 验证码校验
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-06
      */
     public function check_verify($code, $id = '') {
@@ -250,7 +272,7 @@ class AdminService extends ServiceModel {
     /**
      * 获取组合密码
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-07
      */
     private function password($password , $username) {

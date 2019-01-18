@@ -1,7 +1,7 @@
 /**
  * 商品SKU模块
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-11-01
  * 
  * 使用：var SKU = sku.init({ id:'sku', item: item, data:data });
@@ -259,7 +259,7 @@
 /**
  * 上传SKU图集
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-11-01
  * @param skuId
  * @returns

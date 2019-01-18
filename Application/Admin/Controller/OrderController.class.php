@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 订单-控制器
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-16
  */
 namespace Admin\Controller;
@@ -21,20 +30,21 @@ class OrderController extends BaseController {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      * (non-PHPdoc)
      * @see \Admin\Controller\BaseController::index()
      */
     function index() {
-        $this->assign('status',$_GET['status']);
-        parent::index();
+        parent::index([
+            'status'=>(int)$_GET['status'],
+        ]);
     }
     
     /**
      * 修改收货地址
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      */
     function updateAddress() {
@@ -54,7 +64,7 @@ class OrderController extends BaseController {
     /**
      * 订单发货
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      */
     function delivery() {
@@ -96,7 +106,7 @@ class OrderController extends BaseController {
     /**
      * 订单确认
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      */
     function confirmOrder() {
@@ -116,7 +126,7 @@ class OrderController extends BaseController {
     /**
      * 发票详情
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      */
     function invoice() {
@@ -131,7 +141,7 @@ class OrderController extends BaseController {
     /**
      * 线下转账凭证审核
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      */
     function transfer() {
@@ -143,9 +153,11 @@ class OrderController extends BaseController {
         $id = I("get.id",0);
         if($id) {
             $orderExtendMod = new OrderExtendModel();
-            $info = $orderExtendMod->getRowByAttr([
+            $result = $orderExtendMod->getRowByAttr([
                 'order_id'=>$id,
             ]);
+            $info = $orderExtendMod->getInfo($result['id']);
+            $info['order_id'] = $id;
             $this->assign('info',$info);
         }
         //凭证审核状态

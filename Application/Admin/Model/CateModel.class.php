@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 分类-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-09
  */
 namespace Admin\Model;
@@ -16,7 +25,7 @@ class CateModel extends CBaseModel {
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-09
      * (non-PHPdoc)
      * @see \Common\Model\CBaseModel::getInfo()
@@ -31,14 +40,19 @@ class CateModel extends CBaseModel {
                 $info['parent_name'] = $cateInfo['name'];
             }
             
-            //图标
+            //默认图标
             if($info['icon']) {
                 $info['icon_url'] = IMG_URL . $info['icon'];
             }
             
+            //选中图标
+            if($info['icon2']) {
+                $info['icon2_url'] = IMG_URL . $info['icon2'];
+            }
+            
             //类型
             if($info['type']) {
-                $info['type_name'] = C('SYSTEM_CATE')[$info['type']];
+                $info['type_name'] = C('CATEGORY_TYPE')[$info['type']];
             }
             
         }
@@ -48,13 +62,14 @@ class CateModel extends CBaseModel {
     /**
      * 获取子级数据
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-09
      */
     function getChilds($parentId,$flag=false) {
         $list = array();
         $result = $this->where([
             'parent_id' =>$parentId,
+            'type'=>1,
             'mark'      =>1
         ])->order("id asc")->select();
         if($result) {
@@ -76,7 +91,7 @@ class CateModel extends CBaseModel {
     /**
      * 获取分类
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-11-02
      */
     function getCateName($cateId, $delimiter="") {

@@ -1,7 +1,7 @@
 /**
  *	商品订单
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-10-19
  */
 layui.use(['func'],function(){
@@ -12,13 +12,27 @@ layui.use(['func'],function(){
 	
 	if(A=='index') {
 		
-		var status = $("#status").val();
+		var status = parseInt($("#status").val());
+		var option = {};
+		if(status==1) {
+			//待确认
+			option = { fixed:'right', width:250, title: '功能操作', align:'center', toolbar: '#toolBar' };
+		}else if(status==2) {
+			//已确认待付款
+			option = { fixed:'right', width:200, title: '功能操作', align:'center', toolbar: '#toolBar' };
+		}else if(status==3) {
+			//已付款待发货
+			option = { fixed:'right', width:180, title: '功能操作', align:'center', toolbar: '#toolBar' };
+		}else if(status==0 || status==5 || status==8) {
+			//已完成、已结算
+			option = { fixed:'right', width:100, title: '功能操作', align:'center', toolbar: '#toolBar' };
+		}
 		
 		//【TABLE列数组】
 		var cols = [
 				{ type:'checkbox', fixed: 'left' }
 				,{ field:'id', width:80, title: 'ID', align:'center', sort: true, fixed: 'left' }
-				,{ field:'order_num', width:200, title: '订单编号', align:'center' }
+				,{ field:'order_num', width:280, title: '订单编号', align:'center' }
 				,{ field:'order_type_name', width:100, title: '订单类型', align:'center' }
 				,{ field:'format_amount', width:100, title: '商品总额', align:'center' }
 				,{ field:'format_freight_amount', width:100, title: '快递费', align:'center' }
@@ -37,7 +51,7 @@ layui.use(['func'],function(){
 				,{ field:'source_name', width:100, title: '订单来源', align:'center'}
 				,{ field:'format_shipping_time', width:180, title: '发货时间', align:'center' }
 				,{ field:'format_sign_time', width:180, title: '签收时间', align:'center' }
-				,{ fixed:'right', width:620, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				,option
 			];
 		
 		//【渲染TABLE】
@@ -45,7 +59,7 @@ layui.use(['func'],function(){
 			if(layEvent==='updateAddress') {
 				//修改收货地址
 				var url = cUrl + "/updateAddress?id="+data.id;
-				func.showWin("修改收货地址",ur,750,500);
+				func.showWin("修改收货地址",url,800,550);
 				
 			}else if(layEvent==='delivery') {
 				//发货
@@ -64,13 +78,24 @@ layui.use(['func'],function(){
 			}else if(layEvent==='transfer') {
 				//转账凭证审核
 				var url = cUrl + "/transfer?id="+data.id;
-				func.showWin("转账凭证审核",url,550,420);
+				func.showWin("转账凭证审核",url,650,420);
 			}
 
 		},cUrl+"/index?status="+status);
 		
 		//【设置弹框】
 		func.setWin("订单");
+		
+	}else{
+		
+		// 【查看订单商品列表详情】
+		$("#btnProductList").click(function(){
+		
+			var orderId = $("#order_id").val();
+			var url = mUrl + "/OrderProduct/index?order_id="+orderId;
+			func.showWin("订单商品",url);
+			
+		});
 		
 	}
 

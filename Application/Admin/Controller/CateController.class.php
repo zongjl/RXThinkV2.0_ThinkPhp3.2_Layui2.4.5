@@ -1,14 +1,25 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 分类-控制器
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-09
  */
 namespace Admin\Controller;
 use Admin\Model\CateModel;
 use Admin\Service\CateService;
+use Admin\Model\CateAttributeModel;
+use Admin\Model\CateAttributeRelationModel;
 class CateController extends BaseController {
     function __construct() {
         parent::__construct();
@@ -19,7 +30,7 @@ class CateController extends BaseController {
     /**
      * 添加或编辑
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-09
      * (non-PHPdoc)
      * @see \Admin\Controller\BaseController::edit()
@@ -37,9 +48,46 @@ class CateController extends BaseController {
     }
     
     /**
+     * 分类属性
+     *
+     * @author 牧羊人
+     * @date 2018-12-24
+     */
+    function cateAttr() {
+        if(IS_POST) {
+            $message = $this->service->cateAttr();
+            $this->ajaxReturn($message);
+            return ;
+        }
+        
+        $cateAttrRelationMod = new CateAttributeRelationModel();
+        
+        // 分类ID
+        $categoryId = (int)$_GET['category_id'];
+        
+        // 获取已关联属性
+        $attrList = $cateAttrRelationMod->where([
+            'category_id'=>$categoryId,
+            'mark'=>1,
+        ])->getField('category_attribute_id',true);
+        
+        // 获取分类属性
+        $cateAttrMod = new CateAttributeModel();
+        $cateAttrList = $cateAttrMod->where(['type'=>1,'status'=>1])->select();
+        if($attrList) {
+            foreach ($cateAttrList as &$val) {
+                $val['selected'] = in_array($val['id'], $attrList);
+            }
+        }
+        $this->assign('cateAttrList', $cateAttrList);
+        $this->assign('category_id',$_GET['category_id']);
+        $this->render();
+    }
+    
+    /**
      * 获取子级【挂件专用】
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-11-02
      */
     function getChilds() {

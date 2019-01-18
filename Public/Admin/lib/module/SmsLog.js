@@ -1,7 +1,7 @@
 /**
  *	短信发送日志
  * 
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-07-20
  */
 layui.use(['laydate','func'],function(){
@@ -35,7 +35,7 @@ layui.use(['laydate','func'],function(){
 		  		  } }
 				  ,{ field:'msg', width:200, title: '短信返回值', align:'center' }
 				  ,{ field:'format_add_time', width:180, title: '发送时间', align:'center', sort: true }
-				  ,{ fixed:'right', width:100, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				  ,{ fixed:'right', width:100, title: '功能操作', align:'center', toolbar: '#toolBar' }
 			];
 		
 		//【TABLE渲染】

@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 商家-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-19
  */
 namespace Admin\Model;
@@ -16,7 +25,7 @@ class BusinessModel extends CBaseModel {
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-19
      * (non-PHPdoc)
      * @see \Common\Model\CBaseModel::getInfo()
@@ -24,20 +33,28 @@ class BusinessModel extends CBaseModel {
     function getInfo($id) {
         $info = parent::getInfo($id);
         if($info) {
+
+            //申请人性别
+            $info['gender_name'] = C('GENDER_ARR')[$info['gender']];
             
-            //销售总额
-            if($info['seller_amount']) {
-                $info['format_seller_amount'] = \Zeus::formatToYuan($info['seller_amount']);
+            //商家LOGO
+            if($info['logo']) {
+                $info['logo_url'] = IMG_URL . $info['logo'];
+            }
+            
+            //营业执照
+            if($info['business_img']) {
+                $info['business_img_url'] = IMG_URL . $info['business_img'];
+            }
+            
+            //开户许可证
+            if($info['account_img']) {
+                $info['account_img_url'] = IMG_URL . $info['account_img'];
             }
             
             //待结算余额
             if($info['balance']) {
                 $info['format_balance'] = \Zeus::formatToYuan($info['balance']);
-            }
-            
-            //销售目标
-            if($info['seller_target']) {
-                $info['format_seller_target'] = \Zeus::formatToYuan($info['seller_target']);
             }
             
             //审核状态

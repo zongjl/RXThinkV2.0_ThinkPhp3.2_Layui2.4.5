@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 系统常用挂件类【系统公共挂件不允许修改】
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-12
  */
 namespace Admin\Widget;
@@ -16,7 +25,7 @@ class CommonWidget extends Controller {
     /**
      * 上传图片
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-16
      */
     function uploadImg($name,$imgUrl,$size='90x90',$nameStr='',$sizeStr='',$cropSize='',$cropRate='') {
@@ -48,7 +57,7 @@ class CommonWidget extends Controller {
     /**
      * 图集上传
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-17
      */
     function uploadMultImg($name,$imageList,$imgMsg,$size,$maxNum) {
@@ -73,7 +82,7 @@ class CommonWidget extends Controller {
     /**
      * switch开关挂件
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-12
      */
     function switchCheck($idStr,$textStr,$selectId) {
@@ -87,7 +96,7 @@ class CommonWidget extends Controller {
     /**
      * 下拉单选
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-12
      */
     function singleSelect($param,$list,$selectId) {
@@ -111,9 +120,23 @@ class CommonWidget extends Controller {
     }
     
     /**
+     * 上传文件
+     * 
+     * @author 牧羊人
+     * @date 2018-12-21
+     */
+    function uploadMultFile($name,$file=[],$nameStr='附件',$maxNum=9) {
+        $this->assign('name', $name);
+        $this->assign('file', $file);
+        $this->assign('nameStr', $nameStr);
+        $this->assign('maxNum', $maxNum);
+        $this->display("Widget:upload.multipleFile");
+    }
+    
+    /**
      * 汉字串的全拼与首拼组合
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-16
      */
     function pinyin($pinyin,$code){

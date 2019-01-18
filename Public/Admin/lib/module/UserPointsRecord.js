@@ -1,7 +1,7 @@
 /**
  *	用户积分明细
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-10-18
  */
 layui.use(['func'],function(){
@@ -32,7 +32,7 @@ layui.use(['func'],function(){
 				
 				,{ field:'points_type_name', width:150, title: '积分类型', align:'center' }
 				,{ field:'format_add_time', width:180, title: '变动时间', align:'center', sort: true }
-				,{ fixed:'right', width:100, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				,{ fixed:'right', width:100, title: '功能操作', align:'center', toolbar: '#toolBar' }
 			];
 		
 		//【渲染TABLE】

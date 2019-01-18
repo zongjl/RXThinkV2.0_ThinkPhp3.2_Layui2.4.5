@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * API服务基类
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-08-27
  */
 namespace API\Service;
@@ -17,7 +26,7 @@ class APIServiceModel extends Model {
     /**
      * 分页初始化
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-08-27
      * @param $page 页码
      * @param $perpage 每页数
@@ -35,7 +44,7 @@ class APIServiceModel extends Model {
     /**
      * 获取数据列表【带分页】
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-11-15
      */
     public function getList() {
@@ -73,8 +82,8 @@ class APIServiceModel extends Model {
                     $data = $func($info);
                 }else if(is_string($func)) {
                     //回调函数
-                    $func = "get".ucfirst($func)."Info";
-                    $data = call_user_func_array(array($this, $func),[$info]);
+                    $funcName = "get".ucfirst($func)."Info";
+                    $data = call_user_func_array(array($this, $funcName),[$info]);
                 }
                 $list[] = $data;
             }
@@ -95,7 +104,7 @@ class APIServiceModel extends Model {
      *
      * 参数说明：1查询条件 2排序 3获取数据条数 4回调方法名
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-11-15
      */
     function getData() {
@@ -132,8 +141,8 @@ class APIServiceModel extends Model {
                     $data = $func($info);
                 }else if(is_string($func)) {
                     //回调函数
-                    $func = "get".ucfirst($func)."Info";
-                    $data = call_user_func_array(array($this, $func),[$info]);
+                    $funcName = "get".ucfirst($func)."Info";
+                    $data = call_user_func_array(array($this, $funcName),[$info]);
                 }
                 $list[] = $data;
             }
@@ -144,7 +153,7 @@ class APIServiceModel extends Model {
     /**
      * 回调函数
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-08-29
      */
     function getShortInfo($info) {

@@ -1,0 +1,3 @@
+<?php if (!defined('THINK_PATH')) exit(); if(in_array('sys:' . lcfirst($app) . ':' .$funcAct,$funcList)): ?><a href="javascript:" class="layui-btn <?php echo ($funcColor); ?> <?php if($funcType == 2): ?>layui-btn-xs<?php else: ?>layui-btn-small<?php endif; ?> btn<?php echo (ucfirst($funcAct)); ?>" data-param='<?php echo ($param); ?>' lay-event="<?php echo ($funcAct); ?>">
+		<i class="layui-icon"><?php echo ($funcIcon); ?></i> <?php echo ($funcName); ?>
+	</a><?php endif; ?>

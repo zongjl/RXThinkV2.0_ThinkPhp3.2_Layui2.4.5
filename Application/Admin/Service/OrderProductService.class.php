@@ -1,4 +1,13 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 订单产品-服务类
@@ -15,26 +24,25 @@ class OrderProductService extends ServiceModel {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      * (non-PHPdoc)
      * @see \Admin\Model\ServiceModel::getList()
      */
     function getList() {
         $param = I("request.");
-
-        $map = [];
-
+        
         //订单ID
         $orderId = (int)$param['order_id'];
-        if($orderId) {
-            $map['order_id'] = $orderId;
-        }
+        
+        $map = [
+            'order_id'=>$orderId,
+        ];
         
         //商品名称
-        $keywords = trim($param['keywords']);
-        if($keywords) {
-            $map['product_name'] = array('like',"%{$keywords}%");
+        $name = trim($param['name']);
+        if($name) {
+            $map['product_name'] = array('like',"%{$name}%");
         }
         
         return parent::getList($map);

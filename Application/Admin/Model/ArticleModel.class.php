@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * CMS管理-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-17
  */
 namespace Admin\Model;
@@ -24,7 +33,7 @@ class ArticleModel extends CBaseModel {
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-17
      * (non-PHPdoc)
      * @see \Common\Model\CBaseModel::getInfo()
@@ -33,11 +42,14 @@ class ArticleModel extends CBaseModel {
         $info = parent::getInfo($id,true);
         if($info) {
             
+            //文章详情
+            $info['detail_url'] = "https://tech.sina.com.cn/digi/2019-01-10/doc-ihqfskcn5721729.shtml";
+            
             //获取栏目
             if($info['cate_id']) {
-                $cateMod = M("itemCate");
-                $cateInfo = $cateMod->getInfo($info['cate_id']);
-                $info['cate_name'] = $cateInfo['name'];
+                $itemCateMod = new ItemCateModel();
+                $cateInfo = $itemCateMod->getInfo($info['cate_id']);
+                $info['cate_name'] = $cateInfo['item_name'] . ">>" . $cateInfo['name'];
             }
             
             //封面
@@ -49,15 +61,13 @@ class ArticleModel extends CBaseModel {
             $table = $this->getTable($id,false);
             $articleMod = M($table);
             $array = $articleMod->find($id);
-            
             if($array['content']) {
                 while(strstr($array['content'],"[IMG_URL]")){
                     $array['content'] = str_replace("[IMG_URL]", IMG_URL, $array['content']);
                 }
             }
-            
             $info = array_merge($info, $array);
-            
+
             //图集
             if($info['imgs']) {
                 $imgsList =  unserialize($info['imgs']);
@@ -74,7 +84,7 @@ class ArticleModel extends CBaseModel {
     /**
      * 添加或编辑
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-04-15
      */
     public function edit($data, $id=0) {
@@ -109,7 +119,7 @@ class ArticleModel extends CBaseModel {
     /**
      * 保存文章附表信息
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2015-07-09
      */
     function saveDetail($id,$item) {
@@ -117,11 +127,10 @@ class ArticleModel extends CBaseModel {
         $info = $this->where(['id'=>$id])->table($table)->find();
         
         $data = [];
-        if($info) {
+        if(!$info) {
             $data['id'] = $id;
         }
         $data['content'] = $item['content'];
-        
         if($item['guide']) {
             $data['guide'] = $item['guide'];
         }
@@ -133,7 +142,7 @@ class ArticleModel extends CBaseModel {
         $table = $this->getTable($id,false);
         $articleMod = M($table);
         if($articleMod->create()) {
-            if($id) {
+            if($info['id']) {
                 $result = $articleMod->where("id={$id}")->save($data);
             }else{
                 $result = $articleMod->add($data);
@@ -148,7 +157,7 @@ class ArticleModel extends CBaseModel {
     /**
      * 获取分表名称
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-17
      */
     function getTable($id,$isPre=true){

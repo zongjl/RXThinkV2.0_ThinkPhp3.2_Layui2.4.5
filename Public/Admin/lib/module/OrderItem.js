@@ -1,7 +1,7 @@
 /**
  *	订单产品
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-10-08
  */
 layui.use(['form','func'],function(){
@@ -20,7 +20,7 @@ layui.use(['form','func'],function(){
 				  ,{ field:'num', width:100, title: '产品份数', align:'center' }
 				  ,{ field:'format_total_price', width:100, title: '产品总价', align:'center' }
 				  ,{ field:'format_add_time', width:200, title: '添加时间', align:'center', sort: true }
-				  ,{ fixed:'right', width:150, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				  ,{ fixed:'right', width:150, title: '功能操作', align:'center', toolbar: '#toolBar' }
 			];
 		
 		//【TABLE渲染】

@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 合同订单-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-23
  */
 namespace Admin\Model;
@@ -16,7 +25,7 @@ class ContractOrderModel extends CBaseModel {
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-23
      * (non-PHPdoc)
      * @see \Common\Model\CBaseModel::getInfo()
@@ -42,7 +51,7 @@ class ContractOrderModel extends CBaseModel {
             
             //合同类型
             if($info['type']) {
-                $info['type_name'] = C('CONTRACT_ORDER_STATUS')[$info['type']];
+                $info['type_name'] = C('CONTRACT_ORDER_TYPE')[$info['type']];
             }
             
         }

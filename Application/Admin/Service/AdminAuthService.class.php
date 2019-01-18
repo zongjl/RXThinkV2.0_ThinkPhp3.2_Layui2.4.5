@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 权限设置-服务类
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-19
  */
 namespace Admin\Service;
@@ -12,6 +21,8 @@ use Admin\Model\MenuModel;
 use Admin\Model\AdminRoleModel;
 use Admin\Model\AdminModel;
 use Admin\Model\AdminRomModel;
+use Admin\Model\AdminOrgModel;
+use Admin\Model\AdminDepModel;
 class AdminAuthService extends ServiceModel {
     function __construct() {
         parent::__construct();
@@ -21,7 +32,7 @@ class AdminAuthService extends ServiceModel {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-19
      * (non-PHPdoc)
      * @see \Admin\Model\BaseModel::getList()
@@ -74,7 +85,7 @@ class AdminAuthService extends ServiceModel {
     /**
      *  保存设置权限
      *
-     *  @author zongjl
+     *  @author 牧羊人
      *  @date 2018-07-19
      */
     function setAuth() {
@@ -155,6 +166,12 @@ class AdminAuthService extends ServiceModel {
         }else if($type==2) {
             //人员权限配置
             $authMod = new AdminModel();
+        }else if($type==3) {
+            //组织权限
+            $authMod = new AdminOrgModel();
+        }else if($type==4) {
+            //部门权限
+            $authMod = new AdminDepModel();
         }
         $item = [
             'id'    =>$typeId,

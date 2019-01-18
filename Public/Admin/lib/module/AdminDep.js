@@ -1,7 +1,7 @@
 /**
  *	部门管理
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-07-18
  */
 layui.use(['func'],function(){
@@ -84,7 +84,7 @@ layui.use(['func'],function(){
 	    	  	    var itemStr = '';
 	    	  	    if(arr!=null) {
 	    	  	    	for(var i=0;i<arr.length;i++) {
-		    	  			if(i==2 && row.parent_id!=0) continue;
+		    	  			if(i==3 && row.parent_id!=0) continue;
 		    	  			itemStr += arr[i].replace('<a',"<a data-id="+row.id);
 		    	  		}
 	    	  	    }

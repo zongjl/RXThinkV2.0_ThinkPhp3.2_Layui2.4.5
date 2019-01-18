@@ -1,7 +1,7 @@
 /**
  *	广告位描述
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-07-16
  */
 layui.use(['func'],function(){
@@ -23,7 +23,7 @@ layui.use(['func'],function(){
 				  ,{ field:'format_add_user', width:80, title: '添加人', align:'center' }
 				  ,{ field:'format_add_time', width:180, title: '添加时间', align:'center', sort: true }
 				  ,{ field:'sort_order', width:80, title: '排序', align:'center' }
-				  ,{ fixed:'right', width:150, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				  ,{ fixed:'right', width:150, title: '功能操作', align:'center', toolbar: '#toolBar' }
 			];
 		
 		//【TABLE渲染】

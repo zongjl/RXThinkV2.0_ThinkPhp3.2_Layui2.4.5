@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 角色管理-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-13
  */
 namespace Admin\Model;
@@ -35,7 +44,7 @@ class AdminRoleModel extends CBaseModel {
     /**
      * 获取角色权限
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-03-27
      */
     function getRoleAuth($roleIds) {

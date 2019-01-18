@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 文章管理-服务类
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-17
  */
 namespace Admin\Service;
@@ -18,7 +27,7 @@ class ArticleService extends ServiceModel {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-17
      * (non-PHPdoc)
      * @see \Admin\Model\BaseModel::getList()
@@ -32,14 +41,13 @@ class ArticleService extends ServiceModel {
         if($keywords) {
             $map['title'] = array('like',"%{$keywords}%");
         }
-        
         return parent::getList($map);
     }
     
     /**
      * 添加或编辑
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-17
      */
     function edit() {
@@ -71,6 +79,36 @@ class ArticleService extends ServiceModel {
         \Zeus::saveImageByContent($data['content'],$data['title'],"article");
 
         return parent::edit($data);
+        
+    }
+    
+    /**
+     * 设置是否显示
+     * 
+     * @author 牧羊人
+     * @date 2019-01-11
+     */
+    function setIsShow() {
+        $data = I('post.', '', 'trim');
+        if(!$data['id']) {
+            return message('文章ID不能为空',false);
+        }
+        if(!$data['is_show']) {
+            return message('文章状态不能为空',false);
+        }
+        
+        //数据表验证
+        if(!$this->mod->create($data)) {
+            $error = $this->getError();
+            return message($error,false);
+        }
+        $result = M("article")->save($data);
+        if($result!==false) {
+            //手动设置缓存
+            $this->mod->_cacheReset($data['id'],$data,true);
+            return message();
+        }
+        return message('显示状态设置失败',false);
         
     }
     

@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 下拉选择框组件【支持单选、多选】
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-11-23
  */
 namespace Admin\Widget;
@@ -17,7 +26,7 @@ class SelectWidget extends Controller {
      * 下拉选择框($list可以是数组,也可以是URL地址)
      * tag_id|1|产品标签|name|id|1
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-11-23
      */
     function select($param,$list=[],$selectId=[]) {
@@ -57,7 +66,7 @@ class SelectWidget extends Controller {
     /**
      * 选择搜索组件(支持搜索框、输入框)
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-11-23
      */
     function selectSearch($param,$url,$cols=[],$selectStr,$selectId) {

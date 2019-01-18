@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit(); if(in_array('sys:' . lcfirst($app) . ':drop',$funcList)): ?><a class="layui-btn layui-btn-danger layui-btn-xs btnDel" lay-event="del"><i class="layui-icon">&#xe640;</i><?php echo ($funcName); ?></a><?php endif; ?>

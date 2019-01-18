@@ -3,7 +3,7 @@
 /**
  * 快递公司-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-18
  */
 namespace Admin\Model;
@@ -16,7 +16,7 @@ class ExpressesModel extends CBaseModel {
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-18
      * (non-PHPdoc)
      * @see \Common\Model\CBaseModel::getInfo()

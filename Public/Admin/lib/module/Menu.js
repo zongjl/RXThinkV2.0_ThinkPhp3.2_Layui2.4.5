@@ -1,7 +1,7 @@
 /**
  *	菜单管理
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-07-17
  */
 layui.use(['func'],function(){

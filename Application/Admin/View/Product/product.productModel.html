@@ -1,4 +1,4 @@
-<form class="layui-form" action="">
+<form class="layui-form info-form" action="">
 	<div id="sku" data-item="" data-data=""></div>
 	<input name="product_id" id="product_id" type="hidden" value="{$product_id}">
 	<div class="layui-form-item">
@@ -12,7 +12,7 @@
 	//设定扩展的Layui模块的所在目录，一般用于外部模块扩展
 	layui.config({
 	   version:"2.0.7",
-	   base:'/Public/Admin/lib/app/'
+	   base:'__ADMIN__/lib/module/'
 	}).extend({
 	    //larry:'js/base',
 	}).use(['sku','form'],function(){

@@ -70,5 +70,5 @@ layui.define(['larry','form','larryms'],function(exports){
 //获取验证码
 function flushYzm(){
 	var url = layui.$('#verify_img').attr('src');
-	layui.$('#verify_img').attr('src',url+"&rand="+Math.round(Math.random()*100));
+	layui.$('#verify_img').attr('src',"/Login/verify?rand="+Math.round(Math.random()*100));
 }

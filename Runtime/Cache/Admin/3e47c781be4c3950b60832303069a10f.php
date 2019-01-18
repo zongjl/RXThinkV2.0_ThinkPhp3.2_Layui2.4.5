@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?><input name="<?php echo ($idStr); ?>" id="<?php echo ($idStr); ?>" <?php if($selectId == 1): ?>checked<?php endif; ?> lay-skin="switch" lay-filter="<?php echo ($idStr); ?>" lay-text="<?php echo ($textStr); ?>" type="checkbox">

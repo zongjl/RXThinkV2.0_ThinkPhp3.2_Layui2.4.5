@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 菜单管理-控制器
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-16
  */
 namespace Admin\Controller;
@@ -19,7 +28,7 @@ class MenuController extends BaseController {
     /**
      * 添加或编辑
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-17
      * (non-PHPdoc)
      * @see \Admin\Controller\BaseController::edit()
@@ -63,7 +72,7 @@ class MenuController extends BaseController {
     /**
      * 删除菜单
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-08-16
      * (non-PHPdoc)
      * @see \Admin\Controller\BaseController::drop()
@@ -83,7 +92,7 @@ class MenuController extends BaseController {
     /**
      * 批量设置菜单节点
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-11-03
      */
     function batchFunc() {
@@ -101,7 +110,7 @@ class MenuController extends BaseController {
     /**
      * 获取后台框架配置菜单
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-09
      */
     public function getMenuList() {
@@ -113,7 +122,7 @@ class MenuController extends BaseController {
     /**
      * 获取系统图标
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-05-23
      */
     function getSysIcon() {

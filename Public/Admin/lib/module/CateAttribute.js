@@ -1,7 +1,7 @@
 /**
  *	分类属性
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-10-16
  */
 layui.use(['func'],function(){
@@ -18,7 +18,7 @@ layui.use(['func'],function(){
 				,{ field:'id', width:80, title: 'ID', align:'center', sort: true, fixed: 'left' }
 				,{ field:'name', width:200, title: '属性名称', align:'center' }
 				,{ field:'type_name', width:120, title: '属性类型', align:'center' }
-				,{ field:'category_name', width:100, title: '所属分类', align:'center' }
+				,{ field:'category_name', width:150, title: '所属分类', align:'center' }
 				,{ field:'status', width:100, title: '状态', align:'center', templet:function(d){
 	  	  			  var str = "";
 	  	  			  if(d.status==1){
@@ -32,14 +32,14 @@ layui.use(['func'],function(){
 				,{ field:'format_add_user', width:100, title: '创建人', align:'center' }
 				,{ field:'format_add_time', width:180, title: '添加时间', align:'center', sort: true }
 				,{ field:'format_upd_time', width:180, title: '更新时间', align:'center', sort: true }
-				,{ fixed:'right', width:150, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				,{ fixed:'right', width:150, title: '功能操作', align:'center', toolbar: '#toolBar' }
 			];
 		
 		//【渲染TABLE】
 		func.tableIns(cols,"tableList");
 		
 		//【设置弹框】
-		func.setWin("商品属性",450,400);
+		func.setWin("商品属性",580,400);
 		
 	}
 

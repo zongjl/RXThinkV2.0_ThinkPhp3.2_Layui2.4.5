@@ -1,8 +1,8 @@
 /**
  *	广告管理
  *
- *	@auth zongjl
- *	@date 2018-07=17
+ *	@auth 牧羊人
+ *	@date 2018-07-17
  */
 layui.use(['form','func'],function(){
 	var form = layui.form,
@@ -26,7 +26,7 @@ layui.use(['form','func'],function(){
 				  ,{ field:'format_add_user', width:100, title: '添加人', align:'center' }
 				  ,{ field:'format_add_time', width:180, title: '添加时间', align:'center', sort: true }
 				  ,{ field:'sort_order', width:80, title: '排序', align:'center' }
-				  ,{ fixed:'right', width:150, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				  ,{ fixed:'right', width:150, title: '功能操作', align:'center', toolbar: '#toolBar' }
 			];
 		
 		//【TABLE渲染】

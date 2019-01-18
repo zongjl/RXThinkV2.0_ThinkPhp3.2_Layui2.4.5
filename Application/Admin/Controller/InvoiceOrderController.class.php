@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 用户发票申请订单-控制器
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-22
  */
 namespace Admin\Controller;
@@ -18,9 +27,23 @@ class InvoiceOrderController extends BaseController {
     }
     
     /**
+     * 获取数据列表
+     * 
+     * @author 牧羊人
+     * @date 2019-01-10
+     * (non-PHPdoc)
+     * @see \Admin\Controller\BaseController::index()
+     */
+    function index() {
+        parent::index([
+            'status'=>(int)$_GET['status'],
+        ]);
+    }
+    
+    /**
      * 订单确认
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      */
     function confirmOrder() {
@@ -40,7 +63,7 @@ class InvoiceOrderController extends BaseController {
     /**
      * 发货
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-23
      */
     function shipping() {

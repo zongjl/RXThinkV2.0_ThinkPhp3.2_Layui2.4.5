@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 字典-服务类
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-20
  */
 namespace Admin\Service;
@@ -18,7 +27,7 @@ class DictionaryService extends ServiceModel {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-20
      * (non-PHPdoc)
      * @see \Admin\Model\BaseModel::getList()
@@ -39,7 +48,7 @@ class DictionaryService extends ServiceModel {
     /**
      * 添加或编辑
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-20
      * (non-PHPdoc)
      * @see \Admin\Model\BaseModel::edit()

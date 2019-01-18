@@ -1,7 +1,7 @@
 /**
  *	发票管理
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-10-18
  */
 layui.use(['func'],function(){
@@ -30,7 +30,7 @@ layui.use(['func'],function(){
 	  	  		  }}
 				,{ field:'register_address', width:250, title: '注册地址', align:'center' }
 				,{ field:'register_tel', width:130, title: '注册电话', align:'center' }
-				,{ field:'deposit_bank', width:100, title: '开户银行', align:'center' }
+				,{ field:'deposit_bank', width:150, title: '开户银行', align:'center' }
 				,{ field:'deposit_account', width:200, title: '开户账号', align:'center' }
 				,{ field:'status', width:80, title: '状态', align:'center', templet:function(d){
 	  	  			  var str = "";
@@ -44,14 +44,14 @@ layui.use(['func'],function(){
 				,{ field:'format_add_user', width:100, title: '创建人', align:'center' }
 				,{ field:'format_add_time', width:180, title: '添加时间', align:'center', sort: true }
 				,{ field:'format_upd_time', width:180, title: '更新时间', align:'center', sort: true }
-				,{ fixed:'right', width:150, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				,{ fixed:'right', width:150, title: '功能操作', align:'center', toolbar: '#toolBar' }
 			];
 		
 		//【渲染TABLE】
 		func.tableIns(cols,"tableList");
 		
 		//【设置弹框】
-		func.setWin("发票",700,400);
+		func.setWin("发票");
 		
 	}
 

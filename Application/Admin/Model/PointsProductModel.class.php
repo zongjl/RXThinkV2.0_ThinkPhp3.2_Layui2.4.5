@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 积分商城-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-16
  */
 namespace Admin\Model;
@@ -16,7 +25,7 @@ class PointsProductModel extends CBaseModel {
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-16
      * (non-PHPdoc)
      * @see \Common\Model\CBaseModel::getInfo()
@@ -30,12 +39,29 @@ class PointsProductModel extends CBaseModel {
                 $info['cover_url'] = IMG_URL . $info['cover'];
             }
             
+            //品牌
+            if($info['brand_id']) {
+                $brandMod = new BrandModel();
+                $brandInfo = $brandMod->getInfo($info['brand_id']);
+                $info['brand_name'] = $brandInfo['name'];
+            }
+            
+            //分类
+            if($info['cate_id']) {
+                $cateMod = new CateModel();
+                $cateInfo = $cateMod->getInfo($info['cate_id']);
+                $info['cate_name'] = $cateInfo['name'];
+            }
+            
             //商品内容
-            if($info['content']) {
-                while(strstr($info['content'],"[IMG_URL]")){
-                    $info['content'] = str_replace("[IMG_URL]", IMG_URL, $info['content']);
+            if($info['intro']) {
+                while(strstr($info['intro'],"[IMG_URL]")){
+                    $info['intro'] = str_replace("[IMG_URL]", IMG_URL, $info['intro']);
                 }
             }
+            
+            // 商品详情页
+            $info['detail_url'] = "http://www.baidu.com";
 
         }
         return $info;

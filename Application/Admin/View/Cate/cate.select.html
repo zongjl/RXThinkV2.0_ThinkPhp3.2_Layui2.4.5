@@ -17,9 +17,9 @@ layui.use(['form'],function(){
 	,$ = layui.$;
 
 	//选择一级分类
-	form.on('select(p_cate_id)',function(data){
+	form.on('select(p_category_id)',function(data){
 		var id = data.value;
-		console.log("站点ID:"+id);
+		console.log("一级分类ID:"+id);
 		var select = data.othis;
 		if (select[0]) {
 			if (id > 0) {
@@ -29,10 +29,10 @@ layui.use(['form'],function(){
 						$.each(data.data, function(i,item){
 							str += "<option value=\"" + item.id + "\" >" + item.name + "</option>";
 						});
-						$("#cate_id").html('<option value="">【请选择二级分类】</option>'+str);
+						$("#category_id").html('<option value="">【请选择二级分类】</option>'+str);
 						form.render('select');
 					}else{
-						$("#cate_id").html('');
+						$("#category_id").html('');
 						form.render('select');
 						layer.msg(data.msg,{ icon: 5 });
 						return false;
@@ -45,7 +45,7 @@ layui.use(['form'],function(){
 	});
 	
 	//选择二级分类
-	form.on("select(cate_id)",function(data){
+	form.on("select(category_id)",function(data){
 		var id = data.value;
 		console.log("二级分类ID:"+id);
 	});

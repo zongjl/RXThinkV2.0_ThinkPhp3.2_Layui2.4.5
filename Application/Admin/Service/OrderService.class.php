@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 订单-服务类
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-16
  */
 namespace Admin\Service;
@@ -20,7 +29,7 @@ class OrderService extends ServiceModel {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      * (non-PHPdoc)
      * @see \Admin\Model\ServiceModel::getList()
@@ -54,7 +63,7 @@ class OrderService extends ServiceModel {
     /**
      * 修改收货地址
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      */
     function updateAddress() {
@@ -64,7 +73,7 @@ class OrderService extends ServiceModel {
     /**
      * 订单发货
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      */
     function delivery() {
@@ -103,6 +112,7 @@ class OrderService extends ServiceModel {
         //订单信息
         $data = [
             'id'=>$result['order_id'],
+            'status'=>4,
             'receiver_name'=>$result['receiver_name'],
             'receiver_mobile'=>$result['receiver_mobile'],
             'province_id'=>$result['province_id'],
@@ -128,7 +138,7 @@ class OrderService extends ServiceModel {
     /**
      * 订单确认
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      */
     function confirmOrder() {
@@ -142,7 +152,7 @@ class OrderService extends ServiceModel {
     /**
      * 账户凭证审核
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      */
     function transfer() {
@@ -150,13 +160,40 @@ class OrderService extends ServiceModel {
         if(!$data['id']) {
             return message('转账凭证信息不存在',false);
         }
+        //订单ID
+        $orderId = (int)$data['order_id'];
+        if(!$orderId) {
+            return message("订单ID不能为空",false);
+        }
+        
+        //开启事务
+        $this->mod->startTrans();
+        
         $orderExtendMod = new OrderExtendModel();
         $error = '';
         $result = $orderExtendMod->edit($data,$error);
-        if($result) {
-            return message();
+        if(!$result) {
+            //事务回滚
+            $this->mod->rollback();
+            return message($error,false);
         }
-        return message($error,false);
+        
+        //审核成功之后更新订单状态为已发货
+        $rs = $this->mod->edit([
+            'id'=>$orderId,
+            'status'=>3,
+        ]);
+        if(!$rs) {
+            //事务回滚
+            $this->mod->rollback();
+            return message("订单状态更新失败",false);
+        }
+        
+        //提交事务
+        $this->mod->commit();
+        
+        return message();
+        
     }
     
 }

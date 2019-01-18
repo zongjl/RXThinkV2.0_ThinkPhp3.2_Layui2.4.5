@@ -1,8 +1,9 @@
-/*
-* iziToast | v1.0.1
-* http://izitoast.marcelodolce.com
-* by Marcelo Dolce.
-*/
+/**
+ * 消息通知
+ *
+ * @author 牧羊人
+ * @date 2019-01-17
+ */
 .iziToast-capsule {
     font-size: 0;
     height: auto;

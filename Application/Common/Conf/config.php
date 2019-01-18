@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 系统公共配置
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-08-27
  */
 
@@ -45,10 +54,10 @@ $common = array(
     'URL_CASE_INSENSITIVE'  =>  false,   // 默认false 表示URL区分大小写 true则表示不区分大小写
     
     //【加载扩展配置文件】
-    'LOAD_EXT_CONFIG' => 'systemConfig,config.inc',//扩展配置可以支持自动加载额外的自定义配置文件
+    'LOAD_EXT_CONFIG' => 'systemConfig,smsConfig,config.inc',//扩展配置可以支持自动加载额外的自定义配置文件
     
     //【配置扩展函数文件】
-    'LOAD_EXT_FILE' => 'Zeus,Logger,Config',//加载自定义公共函数文件
+    'LOAD_EXT_FILE' => 'Zeus,Logger,Config,SMS',//加载自定义公共函数文件
     
     //【允许访问的模块】
     'MODULE_ALLOW_LIST' =>  array('Home','Admin','API'),

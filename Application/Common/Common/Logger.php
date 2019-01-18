@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 系统日志-常用类
  *
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-18
  */
 use Admin\Model\SystemLogModel;
@@ -21,7 +30,7 @@ class Logger {
     /**
      * 实例化存储对象
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-20
      * @return \Common\Model\SystemLogModel
      */
@@ -32,7 +41,7 @@ class Logger {
     /**
      * 写入日志
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-26
      */
     static function write($title,$type,$data,$obj,$isSucc=true) {
@@ -48,7 +57,7 @@ class Logger {
     /**
      * 写入成功日志
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-18
      */
     static function writeSucc($title,$type,$data,$obj) {
@@ -96,7 +105,7 @@ class Logger {
     /**
      * 写入失败日志
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-26
      */
     static function writeFail($title,$type,$data,$obj) {
@@ -106,7 +115,7 @@ class Logger {
     /**
      * 写入数据库
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-26
      * @param unknown $data
      */

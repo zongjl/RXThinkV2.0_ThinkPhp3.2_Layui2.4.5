@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 站点栏目-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-16
  */
 namespace Admin\Model;
@@ -23,7 +32,7 @@ class ItemCateModel extends CBaseModel {
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-16
      * (non-PHPdoc)
      * @see \Common\Model\CBaseModel::getInfo()
@@ -57,7 +66,7 @@ class ItemCateModel extends CBaseModel {
     /**
      * 获取子级数据
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-16
      */
     function getChilds($itemId=0,$parentId,$flag=false) {
@@ -70,10 +79,10 @@ class ItemCateModel extends CBaseModel {
             foreach ($result as $val) {
                 $info = $this->getInfo($val['id']);
                 if(!$info) continue;
-//                 if($flag) {
-//                     $childList = $this->getChilds($itemId,$val['id'],0);
-//                     $info['children'] = $childList;
-//                 }
+                if($flag) {
+                    $childList = $this->getChilds($itemId,$val['id'],0);
+                    $info['children'] = $childList;
+                }
                 $list[] = $info;
             }
         }
@@ -83,7 +92,7 @@ class ItemCateModel extends CBaseModel {
     /**
      * 获取分类名称
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-16
      */
     function getCateName($cateId,$delimiter="") {

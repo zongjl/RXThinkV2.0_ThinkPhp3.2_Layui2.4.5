@@ -1,7 +1,7 @@
 /**
  *	订单商品
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-10-22
  */
 layui.use(['func'],function(){

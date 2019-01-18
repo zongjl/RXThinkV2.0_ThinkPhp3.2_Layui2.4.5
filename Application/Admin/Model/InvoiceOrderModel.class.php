@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 用户发票申请订单-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-22
  */
 namespace Admin\Model;
@@ -16,7 +25,7 @@ class InvoiceOrderModel extends CBaseModel {
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-22
      * (non-PHPdoc)
      * @see \Common\Model\CBaseModel::getInfo()
@@ -26,9 +35,10 @@ class InvoiceOrderModel extends CBaseModel {
         if($info) {
             
             //订单编号
-            if($info['order_num']) {
+            if($info['order_ids']) {
+                
                 $orderList = M("order")->field("order_num")->where([
-                    'id'    =>array('in',$info['order_num']),
+                    'id'    =>array('in',$info['order_ids']),
                     'mark'  =>1,
                 ])->select();
                 $order = array_key_value($orderList,'order_num');
@@ -51,17 +61,9 @@ class InvoiceOrderModel extends CBaseModel {
             if($info['freight_amount']) {
                 $info['format_freight_amount'] = \Zeus::formatToYuan($info['freight_amount']);
             }
-            
-            //订单来源
-            $info['source_name'] = C('ORDER_SOURCE')[$info['source']];
-            
+
             //申请单状态
             $info['status_name'] = C('USER_INVOICE_ORDER')[$info['status']];
-            
-            //支付时间
-            if($info['pay_time']) {
-                $info['format_pay_time'] = date('Y-m-d H:i:s',$info['pay_time']);
-            }
             
             //发货时间
             if($info['shipping_time']) {

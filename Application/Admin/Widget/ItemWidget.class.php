@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 站点栏目挂件
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-16
  */
 namespace Admin\Widget;
@@ -17,7 +26,7 @@ class ItemWidget extends Controller {
     /**
      * 站点(栏目)选择
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-16
      */
     function itemSelect($itemId,$cateId=0,$limit=1) {
@@ -33,7 +42,7 @@ class ItemWidget extends Controller {
         $itemCateMod = new ItemCateModel();
         $info = $itemCateMod->getInfo($cateId);
         $level = $limit>1 ? $limit : 1;
-        $parentId = $info['parent_id'];
+        $parentId = (int)$info['parent_id'];
         while ($level > 1 && $cateId) {
             $itemList[$level]['list'] = $itemCateMod->getChilds($itemId,$parentId);
             $itemList[$level]['selected'] = $info['id'];

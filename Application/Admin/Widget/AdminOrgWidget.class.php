@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 组织机构-挂件
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-24
  */
 namespace Admin\Widget;
@@ -17,7 +26,7 @@ class AdminOrgWidget extends Controller {
     /**
      * 选择组织机构
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-24
      */
     function select($param,$selectId) {

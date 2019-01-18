@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 组织机构-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-23
  */
 namespace Admin\Model;
@@ -24,7 +33,7 @@ class AdminOrgModel extends CBaseModel {
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-24
      * (non-PHPdoc)
      * @see \Common\Model\CBaseModel::getInfo()
@@ -43,6 +52,11 @@ class AdminOrgModel extends CBaseModel {
                 $cityMod = new CityModel();
                 $cityName = $cityMod->getCityName($info['district_id'],">>",true);
                 $info['city_name'] = $cityName;
+            }
+            
+            //权限反序列化
+            if($info['auth']) {
+                $info['auth'] = unserialize($info['auth']);
             }
             
         }

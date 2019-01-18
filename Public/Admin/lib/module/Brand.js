@@ -1,7 +1,7 @@
 /**
  *	品牌
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-10-08
  */
 layui.use(['form','func'],function(){
@@ -23,18 +23,28 @@ layui.use(['form','func'],function(){
 			 			}
 			 			return logoStr;
 		          }}
+				  ,{ field:'type_name', width:100, title: '类型名称', align:'center' }
+				  ,{ field:'status', width:100, title: '品牌状态', align:'center', templet:function(d){
+    	  			  var str = "";
+    	  			  if(d.status==1){
+    	  				  str = '<span class="layui-btn layui-btn-green layui-btn-xs">在用</span>';
+    	  			  }else if(d.status==2){
+    	  				  str = '<span class="layui-btn layui-bg-cyan layui-btn-xs">停用</span>';
+    	  			  }
+    	  			  return str;
+    	  		  }}
 				  ,{ field:'sort_order', width:80, title: '排序', align:'center' }
 				  ,{ field:'format_add_user', width:100, title: '添加人', align:'center' }
 				  ,{ field:'format_add_time', width:180, title: '添加时间', align:'center' }
 				  ,{ field:'format_upd_time', width:180, title: '更新时间', align:'center' }
-				  ,{ fixed:'right', width:150, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				  ,{ fixed:'right', width:150, title: '功能操作', align:'center', toolbar: '#toolBar' }
 			];
 		
 		//【TABLE渲染】
 		func.tableIns(cols,"tableList");
 		
 		//【设置弹框】
-		func.setWin("品牌",450,500);
+		func.setWin("品牌");
 		
 	}
 	

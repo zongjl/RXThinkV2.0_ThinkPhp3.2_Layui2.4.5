@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * CMS管理-控制器
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-17
  */
 namespace Admin\Controller;
@@ -19,7 +28,7 @@ class ArticleController extends BaseController {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-08-17
      * (non-PHPdoc)
      * @see \Admin\Controller\BaseController::index()
@@ -37,6 +46,20 @@ class ArticleController extends BaseController {
         }
         
         $this->render();
+    }
+    
+    /**
+     * 设置会员状态
+     *
+     * @author 牧羊人
+     * @date 2018-09-08
+     */
+    function setIsShow() {
+        if(IS_POST) {
+            $message = $this->service->setIsShow();
+            $this->ajaxReturn($message);
+            return ;
+        }
     }
     
 }

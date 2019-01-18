@@ -1,0 +1,127 @@
+#RXThinkÏîÄ¿¿ò¼Ü
+<VirtualHost *:80>
+    DocumentRoot "D:/xampp/htdocs/RXThink"
+    ServerName www.rxthink.com
+    <Directory "D:/xampp/htdocs/RXThink">
+		Options Indexes FollowSymLinks ExecCGI
+		AllowOverride All
+		Order deny,allow
+		Allow from all
+		
+		RewriteEngine On
+
+		RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+		
+    </Directory>
+	
+	<IfModule dir_module>
+        DirectoryIndex  index.php
+    </IfModule>
+    ErrorLog "logs/dummy-host.example.com-error.log"
+    CustomLog "logs/dummy-host.example.com-access.log" common
+	
+</VirtualHost>
+<VirtualHost *:80>
+    DocumentRoot "D:/xampp/htdocs/RXThink"
+    ServerName main.rxthink.com
+    <Directory "D:/xampp/htdocs/RXThink>
+		Options Indexes FollowSymLinks ExecCGI
+		AllowOverride All
+		Order deny,allow
+		Allow from all
+		
+		RewriteEngine On
+
+		RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteRule ^(.*)$ admin.php/$1 [QSA,PT,L]
+		
+    </Directory>
+    <IfModule dir_module>
+        DirectoryIndex  admin.php
+    </IfModule>
+    ErrorLog "logs/dummy-host.example.com-error.log"
+    CustomLog "logs/dummy-host.example.com-access.log" common
+	
+</VirtualHost>
+<VirtualHost *:80>
+    DocumentRoot "D:/xampp/htdocs/RXThink/Uploads/img"
+    ServerName images.rxthink.com
+    <Directory "D:/xampp/htdocs/RXThink/Uploads/img">
+		Options Indexes FollowSymLinks ExecCGI
+		AllowOverride All
+		Order deny,allow
+		Allow from all
+    </Directory>
+    #RewriteEngine On
+    #RewriteRule ^/assets/(.*)$  /assets/$1  [L]
+    #RewriteRule ^/(.*)$         /index.php  [L]
+</VirtualHost>
+<VirtualHost *:80>
+    DocumentRoot "D:/xampp/htdocs/RXThink"
+    ServerName api.rxthink.com
+    <Directory "D:/xampp/htdocs/RXThink">
+		Options Indexes FollowSymLinks ExecCGI
+		AllowOverride All
+		Order deny,allow
+		Allow from all
+		
+		RewriteEngine On
+
+		RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteRule ^(.*)$ api.php/$1 [QSA,PT,L]
+		
+    </Directory>
+	<IfModule dir_module>
+        DirectoryIndex  api.php
+    </IfModule>
+    ErrorLog "logs/dummy-host.example.com-error.log"
+    CustomLog "logs/dummy-host.example.com-access.log" common
+</VirtualHost>
+<VirtualHost *:80>
+    DocumentRoot "D:/xampp/htdocs/RXThink"
+    ServerName script.rxthink.com
+    <Directory "D:/xampp/htdocs/RXThink">
+		Options Indexes FollowSymLinks ExecCGI
+		AllowOverride All
+		Order deny,allow
+		Allow from all
+		
+		RewriteEngine On
+
+		RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteRule ^(.*)$ script.php/$1 [QSA,PT,L]
+		
+    </Directory>
+	<IfModule dir_module>
+        DirectoryIndex  script.php
+    </IfModule>
+    ErrorLog "logs/dummy-host.example.com-error.log"
+    CustomLog "logs/dummy-host.example.com-access.log" common
+</VirtualHost>
+<VirtualHost *:80>
+    DocumentRoot "D:/xampp/htdocs/RXThink"
+    ServerName h5.rxthink.com
+    <Directory "D:/xampp/htdocs/RXThink">
+		Options Indexes FollowSymLinks ExecCGI
+		AllowOverride All
+		Order deny,allow
+		Allow from all
+		
+		RewriteEngine On
+
+		RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteRule ^(.*)$ wap.php/$1 [QSA,PT,L]
+		
+    </Directory>
+	<IfModule dir_module>
+        DirectoryIndex  wap.php
+    </IfModule>
+    ErrorLog "logs/dummy-host.example.com-error.log"
+    CustomLog "logs/dummy-host.example.com-access.log" common
+</VirtualHost>

@@ -1,7 +1,7 @@
 /**
  *	寄件管理
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-10-23
  */
 layui.use(['func'],function(){
@@ -34,14 +34,14 @@ layui.use(['func'],function(){
 				,{ field:'address', width:250, title: '详细地址', align:'center' }
 				,{ field:'note', width:300, title: '备注', align:'center' }
 				,{ field:'format_add_time', width:180, title: '发货时间', align:'center' }
-				,{ fixed:'right', width:150, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				,{ fixed:'right', width:150, title: '功能操作', align:'center', toolbar: '#toolBar' }
 			];
 		
 		//【渲染TABLE】
 		func.tableIns(cols,"tableList");
 		
 		//【设置弹框】
-		func.setWin("货物物流",750,450);
+		func.setWin("货物物流");
 		
 	}
 

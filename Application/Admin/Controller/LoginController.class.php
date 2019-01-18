@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 后台登录-控制器
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-`8
  */
 namespace Admin\Controller;
@@ -18,7 +27,7 @@ class LoginController extends BaseController {
     /**
      * 登录入口
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-18
      * (non-PHPdoc)
      * @see \Admin\Controller\BaseController::index()
@@ -30,7 +39,7 @@ class LoginController extends BaseController {
     /**
      * 用户登录
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-06-21
      */
     public function login() {
@@ -49,7 +58,7 @@ class LoginController extends BaseController {
     /**
      * 验证码
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-06-21
      */
     public function verify() {
@@ -69,7 +78,7 @@ class LoginController extends BaseController {
     /**
      * 验证码校验（备用）
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-06
      */
     public function check_verify($code, $id = '')

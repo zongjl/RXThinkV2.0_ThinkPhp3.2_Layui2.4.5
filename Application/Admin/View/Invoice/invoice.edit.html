@@ -1,4 +1,4 @@
-<form class="layui-form" action="">
+<form class="layui-form info-form" action="">
 	<input name="id" id="id" type="hidden" value="{$info.id}">
 	<div class="layui-form-item">
 		<div class="layui-inline">
@@ -53,6 +53,34 @@
 			<label class="layui-form-label">发票状态：</label>
 			<div class="layui-input-inline">
 				{:W('common/switchCheck',array(status,'在用|停用',$info['status'] ? $info['status'] : 1))}
+			</div>
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">发票收件人：</label>
+			<div class="layui-input-inline">
+				<input name="receive_name" id="receive_name" value="{$info.receive_name}" lay-verify="required" autocomplete="off" placeholder="请输入发票收件人" class="layui-input" type="text">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">收件人手机号：</label>
+			<div class="layui-input-inline">
+				<input name="receive_mobile" id="receive_mobile" value="{$info.receive_mobile}" lay-verify="required" autocomplete="off" placeholder="请输入收件人手机" class="layui-input" type="text">
+			</div>
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">发票收件人：</label>
+			<div class="layui-input-inline">
+				{:W('city/select2',array('省/市/区|0',$info['receive_district_id'],3))}
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">收件详细地址：</label>
+			<div class="layui-input-inline">
+				<input name="receive_address" id="receive_address" value="{$info.receive_address}" lay-verify="required" autocomplete="off" placeholder="请输入收件详细地址" class="layui-input" type="text">
 			</div>
 		</div>
 	</div>

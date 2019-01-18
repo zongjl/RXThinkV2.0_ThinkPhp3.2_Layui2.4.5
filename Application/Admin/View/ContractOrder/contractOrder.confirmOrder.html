@@ -8,7 +8,7 @@
 	    width: 180px;
 	}
 </style>
-<form class="layui-form" action="">
+<form class="layui-form info-form" action="">
 	<input name="id" id="id" type="hidden" value="{$info.id}">
 	<div class="layui-form-item">
 		<div class="layui-inline">
@@ -18,9 +18,13 @@
 			</div>
 		</div>
 		<div class="layui-inline">
-			<label class="layui-form-label">合同状态：</label>
-			<div class="layui-input-inline">
-				{:W('common/singleSelect',array('status|1|订单状态|name|id',C('CONTRACT_ORDER_STATUS'),$info['status']))}
+			<label class="layui-form-label">合同类型：</label>
+			<div class="layui-form-mid">
+				<if condition="$info.type eq 1">
+				<span class="layui-btn layui-btn-normal layui-btn-xs">新签订</span>
+				<elseif condition="$info.type eq 2"/>
+				<span class="layui-btn layui-btn-danger layui-btn-xs">续签</span>
+				</if>
 			</div>
 		</div>
 	</div>
@@ -36,6 +40,12 @@
 			<div class="layui-form-mid">
 				{$info.format_end_time}
 			</div>
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">合同状态：</label>
+		<div class="layui-input-inline">
+			{:W('common/singleSelect',array('status|1|订单状态|name|id',C('CONTRACT_ORDER_STATUS'),$info['status']))}
 		</div>
 	</div>
 	<div class="layui-form-item layui-form-text">

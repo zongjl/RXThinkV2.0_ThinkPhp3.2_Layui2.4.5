@@ -1,7 +1,7 @@
 /**
  *	会员管理
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-10-25
  */
 layui.use(['func','form'],function(){
@@ -43,7 +43,7 @@ layui.use(['func','form'],function(){
 	  	  		  }}
 				  ,{ field:'status', width:100, title: '会员状态', align:'center', templet:"#statusTpl" }
 				  ,{ field:'format_add_time', width:180, title:'注册时间', align:'center' }
-				  ,{ fixed: 'right', width:150, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				  ,{ fixed: 'right', width:150, title: '功能操作', align:'center', toolbar: '#toolBar' }
 			];
 		
 		//【TABLE渲染】

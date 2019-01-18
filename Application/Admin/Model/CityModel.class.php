@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 城市-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-17
  */
 namespace Admin\Model;
@@ -22,7 +31,7 @@ class CityModel extends CBaseModel {
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-17
      * (non-PHPdoc)
      * @see \Common\Model\CBaseModel::getInfo()
@@ -38,7 +47,7 @@ class CityModel extends CBaseModel {
     /**
      * 获取子级城市
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-17
      */
     function getChilds($parentId,$flag=false) {
@@ -70,7 +79,7 @@ class CityModel extends CBaseModel {
     /**
      * 获取城市名称
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-17
      */
     function getCityName($cityId, $delimiter="", $isReplace=false) {
@@ -93,7 +102,7 @@ class CityModel extends CBaseModel {
     /**
      * 获取所有城市缓存
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-03-07
      */
     function getAll(){
@@ -103,7 +112,7 @@ class CityModel extends CBaseModel {
     /**
      * 查询所有城市缓存
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-17
      */
     public function _cacheAll(){

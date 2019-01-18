@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 菜单管理-服务类
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-16
  */
 namespace Admin\Service;
@@ -18,7 +27,7 @@ class MenuService extends ServiceModel {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-20
      * (non-PHPdoc)
      * @see \Admin\Model\BaseModel::getList()
@@ -31,7 +40,7 @@ class MenuService extends ServiceModel {
     /**
      * 添加或编辑
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-26
      * (non-PHPdoc)
      * @see \Admin\Model\BaseModel::edit()
@@ -46,7 +55,7 @@ class MenuService extends ServiceModel {
     /**
      * 批量设置节点
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-11-03
      */
     function batchFunc() {
@@ -105,7 +114,7 @@ class MenuService extends ServiceModel {
     /**
      * 获取菜单配置列表
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-07-09
      */
     function getMenuList($auth) {

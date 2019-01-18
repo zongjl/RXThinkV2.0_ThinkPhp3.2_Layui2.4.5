@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 发票-服务类
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-16
  */
 namespace Admin\Service;
@@ -19,7 +28,7 @@ class InvoiceService extends ServiceModel {
     /**
      * 获取数据列表
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-18
      * (non-PHPdoc)
      * @see \Admin\Model\ServiceModel::getList()
@@ -37,6 +46,12 @@ class InvoiceService extends ServiceModel {
                 'mobile'=>$mobile,
             ]);
             $map['user_id'] = $userInfo['id'];
+        }
+        
+        //发票抬头
+        $invoice_head = trim($param['invoice_head']);
+        if($invoice_head) {
+            $map['invoice_head'] = $invoice_head;
         }
         
         //类型
@@ -57,7 +72,7 @@ class InvoiceService extends ServiceModel {
     /**
      * 添加或编辑
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-18
      * (non-PHPdoc)
      * @see \Admin\Model\ServiceModel::edit()
@@ -65,6 +80,9 @@ class InvoiceService extends ServiceModel {
     function edit() {
         $data = I('post.', '', 'trim');
         $data['status'] = (isset($data['status']) && $data['status']=="on") ? 1 : 2;
+        $data['receive_province_id'] = (int)$data['province_id'];
+        $data['receive_city_id'] = (int)$data['city_id'];
+        $data['receive_district_id'] = (int)$data['district_id'];
         return parent::edit($data);
     }
     

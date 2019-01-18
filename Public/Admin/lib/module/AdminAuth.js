@@ -1,7 +1,7 @@
 /**
  *	权限设置
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-07-17
  */
 layui.use(['form','func'],function(){

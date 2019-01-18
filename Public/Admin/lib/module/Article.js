@@ -1,11 +1,12 @@
 /**
  *	文章CMS管理
  *
- *	@auth zongjl
+ *	@auth 牧羊人
  *	@date 2018-07-17
  */
-layui.use(['laydate','func'],function(){
+layui.use(['form','func'],function(){
 	var func = layui.func,
+		form = layui.form,
 		$ = layui.$;
 	
 	if(A=='index') {
@@ -14,13 +15,22 @@ layui.use(['laydate','func'],function(){
 		var cols = [
 				{ type:'checkbox', fixed: 'left' }
 				  ,{ field:'id', width:80, title: 'ID', align:'center', sort: true, fixed: 'left' }
-				  ,{ field:'title', width:400, title: '文章标题', align:'center', }
-				  ,{ field:'type_name', width:100, title: '文章类型', align:'center' }
-				  ,{ field:'is_show', width:150, title: '是否显示', align:'center' }
+				  ,{ field:'title', width:400, title: '文章标题', align:'center', templet:function(d){
+					  return '<a href="'+d.detail_url+'" title="'+d.title+'" class="layui-table-link" target="_blank">'+d.title+'</a>';
+				  } }
+				  ,{ field:'cover_url', width:60, title: '封面', align:'center', templet:function(d){
+					  var coverStr = "";
+			 			if(d.cover_url) {
+			 				coverStr = '<a href="'+d.cover_url+'" target="_blank"><img src="'+d.cover_url+'" height="26" /></a>';
+			 			}
+			 			return coverStr;
+		          }}
+				  ,{ field:'cate_name', width:200, title: '所属分类', align:'center' }
+				  ,{ field:'is_show', width:150, title: '是否显示', align:'center', templet:"#isShowTpl" }
 				  ,{ field:'view_num', width:100, title: '浏览数', align:'center', sort: true }
 				  ,{ field:'format_add_user', width:150, title: '添加人', align:'center', sort: true }
 				  ,{ field:'format_add_time', width:180, title: '添加时间', align:'center', }
-				  ,{ fixed: 'right', width:150, title: '功能操作区', align:'center', toolbar: '#toolBar' }
+				  ,{ fixed: 'right', width:150, title: '功能操作', align:'center', toolbar: '#toolBar' }
 			];
 		
 		//【TABLE渲染】
@@ -28,6 +38,18 @@ layui.use(['laydate','func'],function(){
 		
 		//【设置弹框】
 		func.setWin("文章");
+		
+		//【设置文章显示状态】
+    	form.on('switch(is_show)', function(obj){
+    		var is_show = this.checked ? '1' : '2';
+    		
+    		//发起POST请求
+    		var url = cUrl + "/setIsShow";
+    		func.ajaxPost(url,{"id":this.value,"is_show":is_show},function(data,res){
+    			console.log("请求回调");
+    		});
+    		
+    	});
 		
 	}
 	

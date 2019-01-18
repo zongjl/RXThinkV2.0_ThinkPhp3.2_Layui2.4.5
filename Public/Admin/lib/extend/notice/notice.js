@@ -1,14 +1,11 @@
 /**
  * 消息通知
  *
- * @author  王帆
- * @version  1.0
+ * @author 牧羊人
+ * @date 2019-01-17
  */
-
 layui.define(['jquery'], function (exports) {
     var $ = layui.jquery;
-
-
     var PLUGIN_NAME = 'iziToast';
     var iziToast = {};
     var supports = !!document.querySelector; // Feature test

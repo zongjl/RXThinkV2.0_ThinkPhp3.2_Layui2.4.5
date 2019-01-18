@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 分类-组件
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-16
  */
 namespace Admin\Widget;
@@ -17,7 +26,7 @@ class CateWidget extends Controller {
     /**
      * 选择分类【多级选择】
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-11-14
      */
     function select($cateId,$limit=2) {
@@ -46,7 +55,7 @@ class CateWidget extends Controller {
     /**
      * 选择分类【层级结构】
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-16
      */
     function select2($param,$selectId) {
@@ -88,7 +97,7 @@ class CateWidget extends Controller {
     /**
      * 分类多选
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-19
      */
     function multipleSelect($param,$selectId,$map=[]) {

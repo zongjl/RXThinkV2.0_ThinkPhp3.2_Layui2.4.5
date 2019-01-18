@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 积分兑换订单-服务类
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-25
  */
 namespace Admin\Service;
@@ -19,7 +28,7 @@ class PointsOrderService extends ServiceModel {
     /**
      * 确认订单
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-25
      */
     function confirmOrder() {
@@ -33,14 +42,22 @@ class PointsOrderService extends ServiceModel {
     /**
      * 发货
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-25
      */
     function shipping() {
         $result = I('post.', '', 'trim');
-        
-        if(!$result['order_id']) {
+        //订单ID
+        $orderId = (int)$result['order_id'];
+        if(!$orderId) {
+            return message('订单ID不存在',false);
+        }
+        $info = $this->mod->getInfo($orderId);
+        if(!$info) {
             return message('订单信息不存在',false);
+        }
+        if($info['status']>=2) {
+            return message('订单已发货',false);
         }
         
         //开启事务
@@ -50,7 +67,7 @@ class PointsOrderService extends ServiceModel {
         $item = [
             'id'=>$result['id'],
             'type'=>3,
-            'order_id'=>$result['order_id'],
+            'order_id'=>$orderId,
             'province_id'=>$result['province_id'],
             'city_id'=>$result['city_id'],
             'district_id'=>$result['district_id'],
@@ -71,15 +88,16 @@ class PointsOrderService extends ServiceModel {
         
         //订单信息
         $data = [
-            'id'=>$result['order_id'],
+            'id'=>$orderId,
             'receiver_name'=>$result['receiver_name'],
             'receiver_mobile'=>$result['receiver_mobile'],
             'province_id'=>$result['province_id'],
             'city_id'=>$result['city_id'],
             'district_id'=>$result['district_id'],
-            'street_id'=>$result['street_id'],
             'address'=>$result['address'],
-            'shipping_status'=>2,
+            'status'=>2,
+            'shipping_time'=>time(),
+            'note'=>$result['note'],
         ];
         $rs = $this->mod->edit($data);
         if(!$rs) {

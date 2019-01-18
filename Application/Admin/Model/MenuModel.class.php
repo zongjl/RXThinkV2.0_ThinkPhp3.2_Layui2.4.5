@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 菜单管理-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-07-16
  */
 namespace Admin\Model;
@@ -23,7 +32,7 @@ class MenuModel extends CBaseModel {
     /**
      * 获取缓存信息
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-02-28
      */
     function getInfo($id,$flag=false) {
@@ -64,7 +73,7 @@ class MenuModel extends CBaseModel {
     /**
      * 获取子级菜单
      *
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-03-01
      */
     function getChilds($parentId,$isMenu=true) {
@@ -102,7 +111,7 @@ class MenuModel extends CBaseModel {
     /**
      * 获取菜单名称
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-11-30
      */
     function getMenuName($menuId,$delimiter='/') {

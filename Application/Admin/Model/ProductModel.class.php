@@ -1,9 +1,18 @@
 <?php
+// +----------------------------------------------------------------------
+// | RXThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2017-2019 http://rxthink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 牧羊人 <rxthink@gmail.com>
+// +----------------------------------------------------------------------
 
 /**
  * 商品-模型
  * 
- * @author zongjl
+ * @author 牧羊人
  * @date 2018-10-16
  */
 namespace Admin\Model;
@@ -16,7 +25,7 @@ class ProductModel extends CBaseModel {
     /**
      * 获取缓存信息
      * 
-     * @author zongjl
+     * @author 牧羊人
      * @date 2018-10-16
      * (non-PHPdoc)
      * @see \Common\Model\CBaseModel::getInfo()
@@ -68,14 +77,35 @@ class ProductModel extends CBaseModel {
             //商品上下架
             $info['is_sale_name'] = C('PRODUCT_IS_SALE')[$info['is_sale']];
             
-            //商品是否热门
-            $info['is_hot_name'] = C('PRODUCT_IS_HOT')[$info['is_hot']];
+            //商品分类
+            if($info['category_id']) {
+                $cateMod = new CateModel();
+                $cateList = $cateMod->where([
+                    'id'=>array('in', $info['category_id']),
+                    'mark'=>1,
+                ])->select();
+                $info['category_list'] = $cateList;
+            }
             
-            //商品是否新品
-            $info['is_new_name'] = C('PRODUCT_IS_NWE')[$info['is_new']];
+            // 阶梯报价
+            if($info['ladder_price']) {
+                $priceList = unserialize($info['ladder_price']);
+                foreach ($priceList as &$val) {
+                    $val['price'] = $val['price']/1000000;
+                }
+                $info['priceList'] = $priceList;
+            }
             
-            //商品是否精品
-            $info['is_best_name'] = C('PRODUCT_IS_BEST')[$info['is_best']];
+            //商品属性
+            $productAttributeRelationMod = new ProductAttributeRelationModel();
+            $attributeList = $productAttributeRelationMod->where(['product_id'=>$id,'mark'=>1])->select();
+            $info['attribute_list'] = $attributeList;
+            if($attributeList) {
+                $info['attribute_id'] = implode(',', array_key_value($attributeList,'category_attribute_value_id'));
+            }
+            
+            // 商品详情页
+            $info['detail_url'] = "http://www.baidu.com";//SITE_URL . "/Product/detail?id={$info['id']}";
             
         }
         return $info;
