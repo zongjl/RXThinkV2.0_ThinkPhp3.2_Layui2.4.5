@@ -99,7 +99,7 @@ RXThink
 
 本演示地址仅供浏览，为了查阅体验，暂未对系统做严格的权限可操作控制，请大家自觉维护，勿恶意操作；
 
-后台地址：[http://manage.kivii.renxixi.com](http://manage.kivii.renxixi.com) 账号：admin 密码：admin123
+后台地址：[http://manage.tp3.rxthink.cn](http://manage.tp3.rxthink.cn) 账号：admin 密码：admin123
 	
 <br>
 	
