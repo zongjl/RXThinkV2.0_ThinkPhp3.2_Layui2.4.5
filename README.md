@@ -95,6 +95,10 @@ RXThink
 
 <br> 
 	
+#### 官网地址
+
+欢迎访问RXThink官网地址：[http://www.rxthink.cn](http://www.rxthink.cn)
+	
 #### 演示地址
 
 本演示地址仅供浏览，为了查阅体验，暂未对系统做严格的权限可操作控制，请大家自觉维护，勿恶意操作；
